@@ -75,7 +75,7 @@ const Navbar: React.FC = () => {
                       {location.pathname === link.path && (
                         <motion.div
                           layoutId="activeTab"
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400"
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 text-"
                           initial={false}
                           transition={{ type: "spring", stiffness: 500, damping: 30 }}
                         />
