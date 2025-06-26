@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, Search } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import ThemeToggle from '../ui/ThemeToggle';
 import MobileMenu from './MobileMenu';
 import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -18,17 +18,12 @@ const Navbar: React.FC = () => {
     { name: 'CONTACT', path: '/contact' },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
 
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
 
-  const isHomePage = location.pathname === '/';
 
   // Dark mode navbar styling to match reference image
   const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 dark:bg-gray-900 border-b border-gray-800 dark:border-gray-800`;
@@ -51,7 +46,7 @@ const Navbar: React.FC = () => {
             >
               <Link
                 to="/"
-                className="text-xl font-black tracking-tight text-white transition-all duration-300"
+                className="text-xl font-black tracking-tight hover:text-white text-white transition-all duration-300"
               >
                 TORTOCRAFT
               </Link>
@@ -93,15 +88,7 @@ const Navbar: React.FC = () => {
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center space-x-3">
-              {/* Search Button */}
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2.5 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300"
-                aria-label="Search"
-              >
-                <Search size={18} />
-              </motion.button>
+             
               
               {/* Theme Toggle */}
               <ThemeToggle />

@@ -103,14 +103,14 @@ const CategoryPage: React.FC = () => {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as 'name' | 'newest')}
-                  className="border border-gray-300 rounded-lg px-3 py-2 text-sm  focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]"
+                  className="border border-gray-300 rounded-lg px-3  bg-[#111827] text-white py-2 text-sm  focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]"
                 >
-                  <option value="name">Sort by Name</option>
+                  <option value="name" >Sort by Name</option>
                   <option value="newest">Newest First</option>
                 </select>
               </div>
               
-              <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+              <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg transition-colors">
                 <Filter size={18} />
                 <span className="text-sm">Filter</span>
               </button>

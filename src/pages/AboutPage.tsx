@@ -67,7 +67,7 @@ const AboutPage: React.FC = () => {
         </div>
         
         {/* Team */}
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Our Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
@@ -104,11 +104,12 @@ const AboutPage: React.FC = () => {
               <p className="text-blue-600 dark:text-blue-400">Sustainability Director</p>
             </div>
           </div>
-        </div>
+        </div> */}
         
         {/* Values */}
         <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 md:p-12 border border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Our Values</h2>
+          <br />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Sustainability</h3>
