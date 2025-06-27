@@ -11,6 +11,23 @@ const Footer: React.FC = () => {
     navigate(path);
   };
 
+  const categories = [
+    { name: 'Hoodies', path: '/categories/hoodies' },
+    { name: 'Sweatpants', path: '/categories/sweatpants' },
+    { name: 'Jackets', path: '/categories/jackets' },
+    { name: 'Tracksuits', path: '/categories/tracksuits' },
+    { name: 'Sweatshirts', path: '/categories/sweatshirts' },
+    { name: 'Footwear', path: '/categories/footwear' },
+    { name: 'Vests', path: '/categories/vests' },
+    { name: 'T-Shirts', path: '/categories/t-shirts' },
+    { name: 'Pants', path: '/categories/pants' },
+    { name: 'Jeans', path: '/categories/jeans' },
+    { name: 'Shorts', path: '/categories/shorts' },
+    { name: 'Swimsuit', path: '/categories/swimsuit' },
+    { name: 'Caps', path: '/categories/caps' },
+    { name: 'Socks', path: '/categories/socks' }
+  ];
+
   return (
     <footer className="bg-gray-900 dark:bg-black text-white" data-scroll-section>
       <div className="container mx-auto px-4">
@@ -47,29 +64,36 @@ const Footer: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Quick Links - NO LINKS, JUST TEXT */}
+            {/* All Categories - Professional Grid Layout */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-bold mb-6 text-white">Quick Links</h4>
-              <ul className="space-y-3">
-                {[
-                  { name: 'Home' },
-                  { name: 'Shop All' },
-                  { name: 'About Us' },
-                  { name: 'Contact' },
-                  { name: 'Services' }
-                ].map((link, index) => (
-                  <li key={index}>
-                    <span className="text-gray-300 font-medium cursor-default">
-                      {link.name}
-                    </span>
-                  </li>
+              <h4 className="text-lg font-bold mb-6 text-white">Shop Categories</h4>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+                {categories.map((category, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => handleNavClick(category.path)}
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-left text-gray-300 hover:text-white transition-colors duration-300 font-medium text-sm py-1 hover:bg-gray-800/30 px-2 rounded-md"
+                  >
+                    {category.name}
+                  </motion.button>
                 ))}
-              </ul>
+              </div>
+              
+              {/* View All Categories Button */}
+              <motion.button
+                onClick={() => handleNavClick('/categories')}
+                whileHover={{ scale: 1.02 }}
+                className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm"
+              >
+                View All Categories →
+              </motion.button>
             </motion.div>
 
             {/* Contact */}
@@ -94,6 +118,15 @@ const Footer: React.FC = () => {
                   <span className="text-gray-300">contact@tortocraft.com</span>
                 </li>
               </ul>
+
+              {/* Quick Contact Button */}
+              <motion.button
+                onClick={() => handleNavClick('/contact')}
+                whileHover={{ scale: 1.02 }}
+                className="mt-6 w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm border border-gray-700 hover:border-gray-600"
+              >
+                Get In Touch →
+              </motion.button>
             </motion.div>
           </div>
         </div>
