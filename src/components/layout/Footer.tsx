@@ -85,8 +85,7 @@ const Footer: React.FC = () => {
                   </motion.button>
                 ))}
               </div>
-              
-             
+            </motion.div>
 
             {/* Contact */}
             <motion.div
