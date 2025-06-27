@@ -401,38 +401,39 @@
     line-clamp: 3;
   }
 
-  /* Scroll to top button - force visibility and positioning */
-  .scroll-to-top-button {
+  /* SCROLL TO TOP BUTTON - FORCE VISIBILITY */
+  .scroll-to-top-visible {
     position: fixed !important;
-    bottom: 24px !important;
-    right: 24px !important;
-    z-index: 9999 !important;
-    width: 56px !important;
-    height: 56px !important;
-    background-color: #2563eb !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 99999 !important;
+    width: 60px !important;
+    height: 60px !important;
+    background-color: #3b82f6 !important;
     color: white !important;
     border-radius: 50% !important;
     border: none !important;
     cursor: pointer !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     transition: all 0.3s ease !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
   }
 
-  .scroll-to-top-button:hover {
-    background-color: #1d4ed8 !important;
-    transform: scale(1.1) translateY(-2px) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
-  }
-
-  .dark .scroll-to-top-button {
-    background-color: #3b82f6 !important;
-  }
-
-  .dark .scroll-to-top-button:hover {
+  .scroll-to-top-visible:hover {
     background-color: #2563eb !important;
+    transform: scale(1.1) !important;
+  }
+
+  .dark .scroll-to-top-visible {
+    background-color: #60a5fa !important;
+  }
+
+  .dark .scroll-to-top-visible:hover {
+    background-color: #3b82f6 !important;
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Instagram, Twitter, Facebook, Youtube, Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Quick Links */}
+            {/* Quick Links - NO LINKS, JUST TEXT */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -57,19 +57,16 @@ const Footer: React.FC = () => {
               <h4 className="text-lg font-bold mb-6 text-white">Quick Links</h4>
               <ul className="space-y-3">
                 {[
-                  { name: 'Home', path: '/' },
-                  { name: 'Shop All', path: '/categories' },
-                  { name: 'About Us', path: '/about' },
-                  { name: 'Contact', path: '/contact' },
-                  { name: 'Services', path: '/services' }
+                  { name: 'Home' },
+                  { name: 'Shop All' },
+                  { name: 'About Us' },
+                  { name: 'Contact' },
+                  { name: 'Services' }
                 ].map((link, index) => (
                   <li key={index}>
-                    <button 
-                      onClick={() => handleNavClick(link.path)}
-                      className="text-gray-300 hover:text-white transition-colors duration-300 font-medium text-left"
-                    >
+                    <span className="text-gray-300 font-medium cursor-default">
                       {link.name}
-                    </button>
+                    </span>
                   </li>
                 ))}
               </ul>
