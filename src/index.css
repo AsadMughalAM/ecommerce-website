@@ -401,13 +401,38 @@
     line-clamp: 3;
   }
 
-  /* Scroll to top button - ensure it's always visible when needed */
-  .scroll-to-top {
+  /* Scroll to top button - force visibility and positioning */
+  .scroll-to-top-button {
     position: fixed !important;
     bottom: 24px !important;
     right: 24px !important;
     z-index: 9999 !important;
-    pointer-events: auto !important;
+    width: 56px !important;
+    height: 56px !important;
+    background-color: #2563eb !important;
+    color: white !important;
+    border-radius: 50% !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .scroll-to-top-button:hover {
+    background-color: #1d4ed8 !important;
+    transform: scale(1.1) translateY(-2px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .dark .scroll-to-top-button {
+    background-color: #3b82f6 !important;
+  }
+
+  .dark .scroll-to-top-button:hover {
+    background-color: #2563eb !important;
   }
 }
 
