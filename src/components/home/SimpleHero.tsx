@@ -26,7 +26,7 @@ const SimpleHero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 opacity-50 -z-5"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto mb-10 ">
+      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto sm:mb-15 mb-10 ">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
