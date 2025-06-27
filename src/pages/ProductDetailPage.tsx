@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Heart, Share2, Truck, Shield, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Heart, Share2, Truck, Shield, RotateCcw, ChevronLeft, ChevronRight, CreditCard, Banknote, Smartphone, Globe } from 'lucide-react';
 import { products } from '../data/products';
 import Breadcrumb from '../components/ui/Breadcrumb';
 import Badge from '../components/ui/Badge';
@@ -11,22 +11,50 @@ const paymentMethods = [
   { 
     name: 'Payoneer', 
     img: 'https://logos-world.net/wp-content/uploads/2021/03/Payoneer-Logo.png',
-    description: 'Global payment platform'
+    description: 'Global payment platform',
+    icon: <Globe size={20} />
   },
   { 
     name: 'Remitly', 
     img: 'https://logos-world.net/wp-content/uploads/2021/08/Remitly-Logo.png',
-    description: 'International money transfer'
+    description: 'International money transfer',
+    icon: <Smartphone size={20} />
   },
   { 
     name: 'MoneyGram', 
     img: 'https://logos-world.net/wp-content/uploads/2020/11/MoneyGram-Logo.png',
-    description: 'Money transfer services'
+    description: 'Money transfer services',
+    icon: <Banknote size={20} />
   },
   { 
     name: 'Western Union', 
     img: 'https://logos-world.net/wp-content/uploads/2020/11/Western-Union-Logo.png',
-    description: 'Global money transfer'
+    description: 'Global money transfer',
+    icon: <CreditCard size={20} />
+  },
+  {
+    name: 'Visa',
+    img: 'https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png',
+    description: 'Credit & Debit Cards',
+    icon: <CreditCard size={20} />
+  },
+  {
+    name: 'Mastercard',
+    img: 'https://logos-world.net/wp-content/uploads/2020/04/Mastercard-Logo.png',
+    description: 'Credit & Debit Cards',
+    icon: <CreditCard size={20} />
+  },
+  {
+    name: 'PayPal',
+    img: 'https://logos-world.net/wp-content/uploads/2020/07/PayPal-Logo.png',
+    description: 'Digital payments',
+    icon: <Smartphone size={20} />
+  },
+  {
+    name: 'Apple Pay',
+    img: 'https://logos-world.net/wp-content/uploads/2020/06/Apple-Pay-Logo.png',
+    description: 'Mobile payments',
+    icon: <Smartphone size={20} />
   }
 ];
 
@@ -42,15 +70,12 @@ const ProductDetailPage: React.FC = () => {
   const [slidesToShow, setSlidesToShow] = useState(4);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Create extended array for seamless infinite scroll
-  const extendedMethods = [...paymentMethods, ...paymentMethods, ...paymentMethods];
-
   // Responsive slides calculation
   useEffect(() => {
     const updateSlidesToShow = () => {
-      if (window.innerWidth < 640) setSlidesToShow(1);
-      else if (window.innerWidth < 768) setSlidesToShow(2);
-      else if (window.innerWidth < 1024) setSlidesToShow(3);
+      if (window.innerWidth < 640) setSlidesToShow(2);
+      else if (window.innerWidth < 768) setSlidesToShow(3);
+      else if (window.innerWidth < 1024) setSlidesToShow(4);
       else setSlidesToShow(4);
     };
 
@@ -93,19 +118,27 @@ const ProductDetailPage: React.FC = () => {
     setCurrentSlide(index);
   };
 
-  const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    // Fallback to a simple colored placeholder with the payment method name
+  const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>, method: any) => {
+    // Create a fallback with the icon and name
     const canvas = document.createElement('canvas');
     canvas.width = 120;
     canvas.height = 60;
     const ctx = canvas.getContext('2d');
     if (ctx) {
-      ctx.fillStyle = '#f3f4f6';
+      // Background
+      ctx.fillStyle = '#f8fafc';
       ctx.fillRect(0, 0, 120, 60);
-      ctx.fillStyle = '#6b7280';
-      ctx.font = '12px Arial';
+      
+      // Border
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(0, 0, 120, 60);
+      
+      // Text
+      ctx.fillStyle = '#475569';
+      ctx.font = 'bold 12px Arial';
       ctx.textAlign = 'center';
-      ctx.fillText('Payment', 60, 35);
+      ctx.fillText(method.name, 60, 35);
     }
     e.currentTarget.src = canvas.toDataURL();
   };
@@ -334,7 +367,7 @@ const ProductDetailPage: React.FC = () => {
 
             {/* Slider Content */}
             <div className="mx-16 relative">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-[120px]">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 min-h-[140px]">
                 {getVisibleMethods().map((method, index) => (
                   <motion.div
                     key={method.key}
@@ -349,15 +382,20 @@ const ProductDetailPage: React.FC = () => {
                     className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-300 group cursor-pointer transform hover:scale-105"
                   >
                     <div className="flex flex-col items-center text-center space-y-3">
-                      <div className="w-24 h-12 flex items-center justify-center bg-white dark:bg-gray-600 rounded-lg group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-all duration-300 p-2 shadow-sm">
+                      {/* Icon and Image Container */}
+                      <div className="w-24 h-12 flex items-center justify-center bg-white dark:bg-gray-600 rounded-lg group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-all duration-300 p-2 shadow-sm relative">
                         <img
                           src={method.img}
                           alt={method.name}
                           className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-transform duration-300"
                           loading="lazy"
-                          onError={handleImgError}
+                          onError={(e) => handleImgError(e, method)}
                           style={{ maxWidth: '90px', maxHeight: '40px' }}
                         />
+                        {/* Fallback Icon */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-opacity duration-300 text-blue-600 dark:text-blue-400">
+                          {method.icon}
+                        </div>
                       </div>
                       <div>
                         <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -375,12 +413,12 @@ const ProductDetailPage: React.FC = () => {
 
             {/* Slide Indicators */}
             <div className="flex justify-center mt-6 space-x-2">
-              {paymentMethods.map((_, index) => (
+              {paymentMethods.slice(0, Math.ceil(paymentMethods.length / slidesToShow)).map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => goToSlide(index)}
+                  onClick={() => goToSlide(index * slidesToShow)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentSlide === index
+                    Math.floor(currentSlide / slidesToShow) === index
                       ? 'bg-blue-600 dark:bg-blue-400 w-6'
                       : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                   }`}

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollToTop from '../ui/ScrollToTop';
@@ -8,6 +9,13 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to top when route changes
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   useEffect(() => {
     // Prevent horizontal scroll and hide vertical scrollbar
     document.body.style.overflowX = 'hidden';

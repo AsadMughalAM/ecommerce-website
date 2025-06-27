@@ -8,6 +8,7 @@ import ContactPage from './pages/ContactPage';
 import ServicesPage from './pages/ServicesPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import ToastContainer from './components/ui/ToastContainer';
+import ScrollToTopOnRouteChange from './components/ui/ScrollToTopOnRouteChange';
 import { useToast } from './hooks/useToast';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="overflow-x-hidden">
       <Router>
+        <ScrollToTopOnRouteChange />
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
