@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import ScrollToTop from '../ui/ScrollToTop';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,10 +10,23 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
 
-  // Scroll to top immediately when route changes
+  // Scroll to top immediately when route changes (except for contact page from footer)
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    // Check if we're navigating to contact page and should scroll to bottom
+    const shouldScrollToBottom = location.state?.scrollToBottom;
+    
+    if (shouldScrollToBottom) {
+      // Small delay to ensure page is rendered
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth'
+        });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.state]);
 
   useEffect(() => {
     // Prevent horizontal scroll and hide vertical scrollbar
@@ -59,7 +71,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         {children}
       </main>
       <Footer />
-      <ScrollToTop />
     </div>
   );
 };

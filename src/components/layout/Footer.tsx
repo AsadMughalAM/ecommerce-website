@@ -11,6 +11,10 @@ const Footer: React.FC = () => {
     navigate(path);
   };
 
+  const handleContactClick = () => {
+    navigate('/contact', { state: { scrollToBottom: true } });
+  };
+
   const categories = [
     { name: 'Hoodies', path: '/categories/hoodies' },
     { name: 'Sweatpants', path: '/categories/sweatpants' },
@@ -112,7 +116,7 @@ const Footer: React.FC = () => {
 
               {/* Quick Contact Button */}
               <motion.button
-                onClick={() => handleNavClick('/contact')}
+                onClick={handleContactClick}
                 whileHover={{ scale: 1.02 }}
                 className="mt-6 w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm border border-gray-700 hover:border-gray-600"
               >
