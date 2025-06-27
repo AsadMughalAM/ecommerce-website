@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import CategoriesPage from './pages/CategoriesPage';
@@ -8,16 +9,28 @@ import ContactPage from './pages/ContactPage';
 import ServicesPage from './pages/ServicesPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import ToastContainer from './components/ui/ToastContainer';
-import ScrollToTopOnRouteChange from './components/ui/ScrollToTopOnRouteChange';
 import { useToast } from './hooks/useToast';
 
 function App() {
   const { toasts } = useToast();
 
+  // Scroll to top on route change
+  useEffect(() => {
+    const handleRouteChange = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    };
+
+    // Listen for popstate events (back/forward navigation)
+    window.addEventListener('popstate', handleRouteChange);
+    
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
+
   return (
     <div className="overflow-x-hidden">
       <Router>
-        <ScrollToTopOnRouteChange />
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
