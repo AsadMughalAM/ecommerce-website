@@ -4,6 +4,24 @@ import { Instagram, Twitter, Facebook, Youtube, Mail, MapPin, Phone } from 'luci
 import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
+  // All 14 categories
+  const allCategories = [
+    { name: 'Hoodies', path: '/categories/hoodies' },
+    { name: 'Sweatpants', path: '/categories/sweatpants' },
+    { name: 'Jackets', path: '/categories/jackets' },
+    { name: 'Tracksuits', path: '/categories/tracksuits' },
+    { name: 'Sweatshirts', path: '/categories/sweatshirts' },
+    { name: 'Footwear', path: '/categories/footwear' },
+    { name: 'Vests', path: '/categories/vests' },
+    { name: 'T-Shirts', path: '/categories/t-shirts' },
+    { name: 'Pants', path: '/categories/pants' },
+    { name: 'Jeans', path: '/categories/jeans' },
+    { name: 'Shorts', path: '/categories/shorts' },
+    { name: 'Swimsuit', path: '/categories/swimsuit' },
+    { name: 'Caps', path: '/categories/caps' },
+    { name: 'Socks', path: '/categories/socks' }
+  ];
+
   return (
     <footer className="bg-gray-900 dark:bg-black text-white" data-scroll-section>
       <div className="container mx-auto px-4">
@@ -68,56 +86,69 @@ const Footer: React.FC = () => {
               </ul>
             </motion.div>
 
-            {/* Categories */}
+            {/* All Categories - Split into two columns */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
+              className="lg:col-span-1"
             >
-              <h4 className="text-lg font-bold mb-6 text-white">Categories</h4>
-              <ul className="space-y-3">
-                {[
-                  { name: 'Hoodies', path: '/categories/hoodies' },
-                  { name: 'Sweatpants', path: '/categories/sweatpants' },
-                  { name: 'Jackets', path: '/categories/jackets' },
-                  { name: 'Tracksuits', path: '/categories/tracksuits' },
-                  { name: 'Sweatshirts', path: '/categories/sweatshirts' }
-                ].map((category, index) => (
-                  <li key={index}>
-                    <Link 
-                      to={category.path} 
-                      className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
-                    >
-                      {category.name}
-                    </Link>
-                  </li>
+              <h4 className="text-lg font-bold mb-6 text-white">All Categories</h4>
+              <div className="grid grid-cols-1 gap-3">
+                {allCategories.slice(0, 7).map((category, index) => (
+                  <Link 
+                    key={index}
+                    to={category.path} 
+                    className="text-gray-300 hover:text-white transition-colors duration-300 font-medium text-sm"
+                  >
+                    {category.name}
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </motion.div>
 
-            {/* Contact */}
+            {/* Contact & Remaining Categories */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-bold mb-6 text-white">Contact Us</h4>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <MapPin size={18} className="mr-3 mt-1 flex-shrink-0 text-gray-400" />
-                  <span className="text-gray-300 leading-relaxed">123 Fashion Street, New York, NY 10001</span>
-                </li>
-                <li className="flex items-center">
-                  <Phone size={18} className="mr-3 flex-shrink-0 text-gray-400" />
-                  <span className="text-gray-300">(123) 456-7890</span>
-                </li>
-                <li className="flex items-center">
-                  <Mail size={18} className="mr-3 flex-shrink-0 text-gray-400" />
-                  <span className="text-gray-300">contact@tortocraft.com</span>
-                </li>
-              </ul>
+              {/* Remaining Categories */}
+              <div className="mb-8">
+                <h4 className="text-lg font-bold mb-6 text-white opacity-0">More Categories</h4>
+                <div className="grid grid-cols-1 gap-3">
+                  {allCategories.slice(7).map((category, index) => (
+                    <Link 
+                      key={index}
+                      to={category.path} 
+                      className="text-gray-300 hover:text-white transition-colors duration-300 font-medium text-sm"
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Contact Info */}
+              <div>
+                <h4 className="text-lg font-bold mb-4 text-white">Contact Us</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <MapPin size={16} className="mr-2 mt-1 flex-shrink-0 text-gray-400" />
+                    <span className="text-gray-300 text-sm leading-relaxed">123 Fashion Street, New York, NY 10001</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Phone size={16} className="mr-2 flex-shrink-0 text-gray-400" />
+                    <span className="text-gray-300 text-sm">(123) 456-7890</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Mail size={16} className="mr-2 flex-shrink-0 text-gray-400" />
+                    <span className="text-gray-300 text-sm">contact@tortocraft.com</span>
+                  </li>
+                </ul>
+              </div>
             </motion.div>
           </div>
         </div>
