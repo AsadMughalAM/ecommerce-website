@@ -400,6 +400,27 @@
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
+
+  /* Scroll to top button specific styles */
+  .scroll-to-top-button {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 99999 !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .scroll-to-top-button:hover {
+    transform: translateY(-2px) scale(1.1) !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+  }
 }
 
 /* Animations */
@@ -620,4 +641,13 @@ article::-webkit-scrollbar {
   font-weight: 900 !important;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
   letter-spacing: 0.5px !important;
+}
+
+/* Force scroll button visibility */
+.scroll-button-container {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
 }

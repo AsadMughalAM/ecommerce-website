@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import ThemeToggle from '../ui/ThemeToggle';
 import MobileMenu from './MobileMenu';
@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
-
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -18,12 +18,14 @@ const Navbar: React.FC = () => {
     { name: 'CONTACT', path: '/contact' },
   ];
 
-
-
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
 
+  const handleNavClick = (path: string) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
 
   // Dark mode navbar styling to match reference image
   const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 dark:bg-gray-900 border-b border-gray-800 dark:border-gray-800`;
@@ -44,12 +46,12 @@ const Navbar: React.FC = () => {
               transition={{ duration: 0.2 }}
               className="flex-shrink-0"
             >
-              <Link
-                to="/"
+              <button
+                onClick={() => handleNavClick('/')}
                 className="text-xl font-black tracking-tight hover:text-white text-white transition-all duration-300"
               >
                 TORTOCRAFT
-              </Link>
+              </button>
             </motion.div>
 
             {/* Desktop Navigation - Centered */}
@@ -62,8 +64,8 @@ const Navbar: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                   >
-                    <Link
-                      to={link.path}
+                    <button
+                      onClick={() => handleNavClick(link.path)}
                       className={`text-sm font-medium tracking-wide transition-all duration-300 relative group py-2 ${
                         location.pathname === link.path
                           ? 'text-blue-400 font-semibold'
@@ -75,12 +77,12 @@ const Navbar: React.FC = () => {
                       {location.pathname === link.path && (
                         <motion.div
                           layoutId="activeTab"
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 text-"
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400"
                           initial={false}
                           transition={{ type: "spring", stiffness: 500, damping: 30 }}
                         />
                       )}
-                    </Link>
+                    </button>
                   </motion.div>
                 ))}
               </div>
@@ -88,8 +90,6 @@ const Navbar: React.FC = () => {
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center space-x-3">
-             
-              
               {/* Theme Toggle */}
               <ThemeToggle />
             </div>

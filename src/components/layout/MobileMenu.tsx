@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { X, Home, Grid3X3, Briefcase, User, Phone, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '../ui/ThemeToggle';
@@ -11,6 +11,7 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: 'Home', path: '/', icon: Home },
@@ -30,6 +31,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     { title: "T-Shirts", link: "/categories/t-shirts" },
     { title: "Jeans", link: "/categories/jeans" },
   ];
+
+  const handleNavClick = (path: string) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+    onClose();
+  };
 
   return (
     <AnimatePresence>
@@ -54,13 +61,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200/20 dark:border-gray-700/20">
-              <Link
-                to="/"
-                onClick={onClose}
+              <button
+                onClick={() => handleNavClick('/')}
                 className="text-2xl font-black text-gray-900 dark:text-white"
               >
                 TORTOCRAFT
-              </Link>
+              </button>
               <div className="flex items-center space-x-2">
                 <ThemeToggle />
                 <button
@@ -100,10 +106,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link
-                      to={link.path}
-                      onClick={onClose}
-                      className={`flex items-center space-x-3 p-4 rounded-xl transition-all duration-300 ${
+                    <button
+                      onClick={() => handleNavClick(link.path)}
+                      className={`flex items-center space-x-3 p-4 rounded-xl transition-all duration-300 w-full text-left ${
                         isActive
                           ? 'bg-blue-600 text-white shadow-lg'
                           : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
@@ -111,7 +116,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     >
                       <Icon size={20} />
                       <span className="font-semibold">{link.name}</span>
-                    </Link>
+                    </button>
                   </motion.div>
                 );
               })}
@@ -130,13 +135,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 + index * 0.05 }}
                   >
-                    <Link
-                      to={category.link}
-                      onClick={onClose}
-                      className="block text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 font-medium"
+                    <button
+                      onClick={() => handleNavClick(category.link)}
+                      className="block text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 font-medium w-full text-left"
                     >
                       {category.title}
-                    </Link>
+                    </button>
                   </motion.div>
                 ))}
               </div>

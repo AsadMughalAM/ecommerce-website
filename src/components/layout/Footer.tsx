@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Instagram, Twitter, Facebook, Youtube, Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleNavClick = (path: string) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
+
   return (
     <footer className="bg-gray-900 dark:bg-black text-white" data-scroll-section>
       <div className="container mx-auto px-4">
@@ -57,12 +64,12 @@ const Footer: React.FC = () => {
                   { name: 'Services', path: '/services' }
                 ].map((link, index) => (
                   <li key={index}>
-                    <Link 
-                      to={link.path} 
-                      className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+                    <button 
+                      onClick={() => handleNavClick(link.path)}
+                      className="text-gray-300 hover:text-white transition-colors duration-300 font-medium text-left"
                     >
                       {link.name}
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>
