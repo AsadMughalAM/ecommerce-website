@@ -86,15 +86,7 @@ const Footer: React.FC = () => {
                 ))}
               </div>
               
-              {/* View All Categories Button */}
-              <motion.button
-                onClick={() => handleNavClick('/categories')}
-                whileHover={{ scale: 1.02 }}
-                className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm"
-              >
-                View All Categories →
-              </motion.button>
-            </motion.div>
+             
 
             {/* Contact */}
             <motion.div
