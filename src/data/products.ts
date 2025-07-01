@@ -41,7 +41,7 @@ import jackets9 from '../assets/jackets/9.jpg'
 import jackets10 from '../assets/jackets/10.jpg'
 import vest1 from '../assets/vests/1.jpg'
 import vest2 from '../assets/vests/2.jpg'
-import vest3 from '../assets/vests/3.png'
+import vest3 from '../assets/vests/3.jpeg'
 import vest4 from '../assets/vests/4.jpg'
 import vest5 from '../assets/vests/5.jpg'
 import vest6 from '../assets/vests/6.jpg'
@@ -50,13 +50,13 @@ import vest8 from '../assets/vests/8.jpg'
 import short1 from '../assets/shorts/1.jpeg'
 import short2 from '../assets/shorts/2.jpeg'
 import short3 from '../assets/shorts/3.jpeg'
-import short4 from '../assets/shorts/4.png'
+import short4 from '../assets/shorts/4.jpeg'
 import short5 from '../assets/shorts/5.jpg'
 import short6 from '../assets/shorts/6.jpg'
 import short7 from '../assets/shorts/7.jpeg'
 import short8 from '../assets/shorts/8.jpeg'
 import short9 from '../assets/shorts/9.jpeg'
-import short10 from '../assets/shorts/10.png'
+
 import sock1 from '../assets/socks/1.jpg'
 import sock2 from '../assets/socks/2.jpg'
 import sock3 from '../assets/socks/3.jpg'
@@ -93,10 +93,9 @@ import pant3 from '../assets/pants/3.jpg'
 import pant4 from '../assets/pants/4.jpg'
 import pant5 from '../assets/pants/5.jpg'
 import pant6 from '../assets/pants/6.jpg'
-import pant7 from '../assets/pants/7.png'
-import pant8 from '../assets/pants/8.png'
-import pant9 from '../assets/pants/9.png'
-import pant10 from '../assets/pants/10.jpeg'
+import pant7 from '../assets/pants/7.jpeg'
+import pant8 from '../assets/pants/8.jpeg'
+
 import sweatpant1 from '../assets/sweatpants/1.jpg'
 import sweatpant2 from '../assets/sweatpants/2.jpeg'
 import sweatpant3 from '../assets/sweatpants/3.jpg'
@@ -768,22 +767,7 @@ export const products: Product[] = [
   image: pant8,
   longDescription: 'Timeless and tailored, these pleated trousers offer a polished silhouette for formal or business wear.'
 },
-{
-  id: 'p9',
-  name: 'Linen Drawstring Pants',
-  description: 'Lightweight pants with a relaxed fit.',
-  category: 'pants',
-  image: pant9,
-  longDescription: 'Perfect for warmer days, these breathable linen pants feature a drawstring waist and breezy cut.'
-},
-{
-  id: 'p10',
-  name: 'Fleece Sweatpants',
-  description: 'Warm and cozy for lounging.',
-  category: 'pants',
-  image: pant10,
-  longDescription: 'Stay snug in these fleece-lined sweatpants, complete with a relaxed fit and elastic waistband.'
-},
+
 
  
 
@@ -859,14 +843,6 @@ export const products: Product[] = [
   category: 'shorts',
   image: short9,
   longDescription: 'Make a splash with colorful printed beach shorts, complete with quick-dry material and fun designs.'
-},
-{
-  id: 'sh12',
-  name: 'Techwear Tactical Shorts',
-  description: 'Futuristic design with functionality.',
-  category: 'shorts',
-  image: short10,
-  longDescription: 'These techwear shorts feature zip pockets, water-resistant fabric, and an urban edge perfect for streetwear lovers.'
 },
 
 
