@@ -41,7 +41,7 @@ const CategoryPage: React.FC = () => {
       'vests': 'Lightweight vests perfect for layering.',
       't-shirts': 'Essential t-shirts made from premium cotton.',
       'pants': 'Comfortable pants suitable for various occasions.',
-      'jeans': 'Classic denim jeans with modern fits.',
+     
       'shorts': 'Comfortable shorts for warm weather.',
       'swimsuit': 'Stylish swimwear for beach and pool.',
       'caps': 'Trendy caps to complete your look.',

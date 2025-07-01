@@ -94,12 +94,6 @@ const CategoriesPage: React.FC = () => {
     link: "/categories/pants"
   },
   {
-    title: "Jeans",
-    description: "Durable and stylish denim jeans for a timeless wardrobe staple.",
-    image: categoryHeroImages.jeans,
-    link: "/categories/jeans"
-  },
-  {
     title: "Shorts",
     description: "Breathe easy and stay cool with our versatile shorts collection.",
     image: categoryHeroImages.shorts,

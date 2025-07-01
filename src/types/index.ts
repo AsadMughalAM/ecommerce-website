@@ -17,7 +17,6 @@ export type Category =
   | 'vests'
   | 't-shirts'
   | 'pants'
-  | 'jeans'
   | 'shorts'
   | 'swimsuit'
   | 'caps'

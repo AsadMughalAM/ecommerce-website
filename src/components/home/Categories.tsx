@@ -91,11 +91,6 @@ const Categories: React.FC = () => {
       link: "/categories/pants"
     },
     {
-      title: "Jeans",
-      image: categoryHeroImages.jeans,
-      link: "/categories/jeans"
-    },
-    {
       title: "Shorts",
       image: categoryHeroImages.shorts,
       link: "/categories/shorts"

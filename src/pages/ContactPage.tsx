@@ -104,7 +104,7 @@ const ContactPage: React.FC = () => {
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white">Our Store</p>
                     <p className="text-gray-600 dark:text-gray-400">
-                      123 Fashion Street, New York, NY 10001
+                     7901 4th ST N STE 7236,Florida City, Florida 33702
                     </p>
                   </div>
                 </div>
@@ -116,8 +116,7 @@ const ContactPage: React.FC = () => {
                   />
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white">Email Us</p>
-                    <p className="text-gray-600 dark:text-gray-400">contact@tortocraft.com</p>
-                    <p className="text-gray-600 dark:text-gray-400">support@tortocraft.com</p>
+                    <p className="text-gray-600 dark:text-gray-400">tortocraft415@gmail.com</p>
                   </div>
                 </div>
 
@@ -128,8 +127,8 @@ const ContactPage: React.FC = () => {
                   />
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white">Call Us</p>
-                    <p className="text-gray-600 dark:text-gray-400">(123) 456-7890</p>
-                    <p className="text-gray-600 dark:text-gray-400">(987) 654-3210</p>
+                    <p className="text-gray-600 dark:text-gray-400">+92 303 5648603</p>
+                  
                   </div>
                 </div>
 
