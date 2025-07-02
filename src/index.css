@@ -34,15 +34,6 @@
   
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
   
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -155,13 +146,6 @@
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
     color: var(--color-gray-100);
   }
-  
-  h1 { font-size: var(--font-size-5xl); }
-  h2 { font-size: var(--font-size-4xl); }
-  h3 { font-size: var(--font-size-3xl); }
-  h4 { font-size: var(--font-size-2xl); }
-  h5 { font-size: var(--font-size-xl); }
-  h6 { font-size: var(--font-size-lg); }
   
   p {
     color: var(--color-gray-600);
@@ -456,17 +440,9 @@
 
 /* Responsive Typography */
 @media (max-width: 640px) {
-  h1 { font-size: var(--font-size-3xl); }
-  h2 { font-size: var(--font-size-2xl); }
-  h3 { font-size: var(--font-size-xl); }
-}
-
-/* Responsive Navbar Fixes */
-@media (min-width: 768px) and (max-width: 1023px) {
-  /* Tablet specific styles */
-  .navbar-tablet-fix {
-    display: flex !important;
-  }
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
 }
 
 /* Print Styles */
@@ -595,29 +571,25 @@ article::-webkit-scrollbar {
   }
 }
 
-/* Enhanced text contrast for better visibility */
-.text-enhanced {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  font-weight: 600;
+/* Performance optimizations */
+img {
+  content-visibility: auto;
 }
 
-/* Better navbar visibility on home page */
-.navbar-home {
-  background: rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(20px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+video {
+  content-visibility: auto;
 }
 
-.navbar-home .nav-link {
-  color: white !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
-  font-weight: 700 !important;
+/* Preload critical resources */
+.hero-video {
+  will-change: transform;
 }
 
-/* Enhanced category text visibility */
-.category-title {
-  color: white !important;
-  font-weight: 900 !important;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-  letter-spacing: 0.5px !important;
+/* Optimize animations */
+.animate-optimized {
+  will-change: transform, opacity;
+}
+
+.animate-optimized.complete {
+  will-change: auto;
 }

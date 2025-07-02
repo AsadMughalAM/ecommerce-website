@@ -8,6 +8,7 @@ import ContactPage from './pages/ContactPage';
 import ServicesPage from './pages/ServicesPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import ToastContainer from './components/ui/ToastContainer';
+import ScrollToTop from './components/ui/ScrollToTop';
 import { useToast } from './hooks/useToast';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetailPage />} />
           </Routes>
         </Layout>
+        <ScrollToTop />
         <ToastContainer toasts={toasts} />
       </Router>
     </div>

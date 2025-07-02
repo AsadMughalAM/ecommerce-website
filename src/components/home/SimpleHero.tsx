@@ -2,25 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import OptimizedVideo from "../ui/OptimizedVideo";
 import apparel from "../../assets/apparel-vedio1.mp4";
 
 const SimpleHero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
-      <video
-          src={apparel}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster=""
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-none  shadow-lg z-10"
-          style={{
-            filter: 'brightness(0.75) contrast(1.1)',
-            maxHeight: '100vh',
-          }}
-        />
+      <OptimizedVideo
+        src={apparel}
+        className="absolute top-0 left-0 w-full h-full object-cover rounded-none shadow-lg z-10"
+        style={{
+          filter: 'brightness(0.75) contrast(1.1)',
+          maxHeight: '100vh',
+        }}
+      />
 
       {/* Gradient overlay for contrast */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 opacity-50 -z-5"></div>
@@ -45,9 +41,9 @@ const SimpleHero: React.FC = () => {
         >
           TORTOCRAFT
           <br />
-   <span className="text-white dark:bg-gradient-to-r  dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 dark:bg-clip-text dark:text-transparent">
-  YOUR STYLE
-</span>
+          <span className="text-white dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 dark:bg-clip-text dark:text-transparent">
+            YOUR STYLE
+          </span>
         </motion.h1>
 
         <motion.p
@@ -79,8 +75,6 @@ const SimpleHero: React.FC = () => {
             Our Story
           </Link>
         </motion.div>
-
-      
       </div>
 
       {/* Floating Blurs */}

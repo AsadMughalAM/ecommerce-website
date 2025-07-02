@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { getOptimizedImageUrl, getPlaceholderImage } from '../../utils/imageUtils';
 
 interface OptimizedImageProps {
   src: string;
@@ -7,7 +6,6 @@ interface OptimizedImageProps {
   width?: number;
   height?: number;
   className?: string;
-  quality?: number;
   loading?: 'lazy' | 'eager';
   onLoad?: () => void;
   onError?: () => void;
@@ -19,16 +17,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   width,
   height,
   className = '',
-  quality = 80,
   loading = 'lazy',
   onLoad,
   onError
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-
-  const optimizedSrc = getOptimizedImageUrl(src, width, height, quality);
-  const placeholderSrc = getPlaceholderImage(width, height);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -39,6 +33,15 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     setHasError(true);
     onError?.();
   };
+
+  const placeholderSrc = `data:image/svg+xml;base64,${btoa(`
+    <svg width="${width || 400}" height="${height || 400}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" fill="#f3f4f6"/>
+      <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af" text-anchor="middle" dy=".3em">
+        ${hasError ? 'Image unavailable' : 'Loading...'}
+      </text>
+    </svg>
+  `)}`;
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
@@ -53,7 +56,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       
       {/* Main Image */}
       <img
-        src={hasError ? placeholderSrc : optimizedSrc}
+        src={hasError ? placeholderSrc : src}
         alt={alt}
         loading={loading}
         onLoad={handleLoad}

@@ -39,8 +39,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
       className="group card overflow-hidden transition-all duration-500 hover:shadow-2xl"
-      data-scroll
-      data-scroll-speed="0.3"
     >
       <Link to={`/product/${product.id}`} className="block">
         <div className="relative overflow-hidden bg-gray-100 dark:bg-gray-800">
