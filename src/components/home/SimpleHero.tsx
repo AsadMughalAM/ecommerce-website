@@ -2,34 +2,42 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import OptimizedVideo from "../ui/OptimizedVideo";
 import apparel from "../../assets/apparel-vedio1.mp4";
 
 const SimpleHero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
-      <OptimizedVideo
-        src={apparel}
-        className="absolute top-0 left-0 w-full h-full object-cover rounded-none shadow-lg z-10"
-        style={{
-          filter: 'brightness(0.75) contrast(1.1)',
-          maxHeight: '100vh',
-        }}
-      />
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          src={apparel}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          style={{
+            filter: 'brightness(0.75) contrast(1.1)',
+          }}
+          onLoadStart={() => console.log('Video loading started')}
+          onCanPlay={() => console.log('Video can play')}
+          onError={(e) => console.error('Video error:', e)}
+        />
+      </div>
 
       {/* Gradient overlay for contrast */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 opacity-50 -z-5"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 opacity-50 z-10"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto sm:mb-15 mb-10 ">
+      <div className="relative z-20 text-center px-4 max-w-6xl mx-auto sm:mb-15 mb-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="inline-flex items-center bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-blue-200 dark:border-blue-800"
         >
-          <Sparkles className="w-4 h-4 mr-2 " />
+          <Sparkles className="w-4 h-4 mr-2" />
           Premium Fashion Collection 2025
         </motion.div>
 

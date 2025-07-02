@@ -5,23 +5,24 @@ import { useLocation } from 'react-router-dom';
 
 const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isHomePage, setIsHomePage] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    setIsHomePage(location.pathname === '/');
-  }, [location.pathname]);
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const toggleVisibility = () => {
+      const scrolled = window.pageYOffset;
+      
       if (isHomePage) {
-        // On home page, show after hero section (approximately 100vh)
-        setIsVisible(window.pageYOffset > window.innerHeight);
+        // On home page, show after hero section (100vh)
+        setIsVisible(scrolled > window.innerHeight);
       } else {
         // On other pages, show after 300px scroll
-        setIsVisible(window.pageYOffset > 300);
+        setIsVisible(scrolled > 300);
       }
     };
+
+    // Check initial scroll position
+    toggleVisibility();
 
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
@@ -38,13 +39,25 @@ const ScrollToTop: React.FC = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          initial={{ opacity: 0, scale: 0.5, y: 100 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          exit={{ opacity: 0, scale: 0.5, y: 100 }}
+          transition={{ 
+            duration: 0.3, 
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 260,
+            damping: 20
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 p-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+          className="fixed bottom-8 right-8 z-[9999] p-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 group border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600"
           aria-label="Scroll to top"
+          style={{ 
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)'
+          }}
         >
           <ChevronUp 
             size={24} 
