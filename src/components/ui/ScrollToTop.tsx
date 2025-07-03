@@ -24,7 +24,7 @@ const ScrollToTop: React.FC = () => {
     // Check initial scroll position
     toggleVisibility();
 
-    window.addEventListener('scroll', toggleVisibility);
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, [isHomePage]);
 
@@ -36,36 +36,44 @@ const ScrollToTop: React.FC = () => {
   };
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.5, y: 100 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 100 }}
-          transition={{ 
-            duration: 0.3, 
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 260,
-            damping: 20
-          }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-[9999] p-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 group border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600"
-          aria-label="Scroll to top"
-          style={{ 
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)'
-          }}
-        >
-          <ChevronUp 
-            size={24} 
-            className="group-hover:-translate-y-1 transition-transform duration-300" 
-          />
-        </motion.button>
-      )}
-    </AnimatePresence>
+    <div className="scroll-to-top-container">
+      <AnimatePresence>
+        {isVisible && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.3, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.3, y: 50 }}
+            transition={{ 
+              duration: 0.4, 
+              ease: "easeOut",
+              type: "spring",
+              stiffness: 300,
+              damping: 25
+            }}
+            whileHover={{ 
+              scale: 1.15,
+              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 z-[99999] w-14 h-14 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center group border-2 border-blue-500 dark:border-blue-400"
+            aria-label="Scroll to top"
+            style={{ 
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              position: 'fixed !important',
+              zIndex: 99999
+            }}
+          >
+            <ChevronUp 
+              size={24} 
+              className="group-hover:-translate-y-0.5 transition-transform duration-300 font-bold" 
+              strokeWidth={3}
+            />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

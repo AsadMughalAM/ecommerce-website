@@ -24,6 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         });
       }, 100);
     } else {
+      // Always scroll to top for new page loads
       window.scrollTo(0, 0);
     }
   }, [location.pathname, location.state]);
@@ -60,7 +61,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return () => {
       document.body.style.overflowX = 'auto';
       document.documentElement.style.overflowX = 'auto';
-      document.head.removeChild(style);
+      if (document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
     };
   }, []);
 
