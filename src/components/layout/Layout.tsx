@@ -10,13 +10,13 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
 
-  // Scroll to top immediately when route changes (except for contact page from footer)
+  // Force scroll to top on every route change
   useEffect(() => {
     // Check if we're navigating to contact page and should scroll to bottom
     const shouldScrollToBottom = location.state?.scrollToBottom;
     
     if (shouldScrollToBottom) {
-      // Small delay to ensure page is rendered
+      // Small delay to ensure page is rendered, then scroll to bottom
       setTimeout(() => {
         window.scrollTo({
           top: document.documentElement.scrollHeight,
@@ -24,10 +24,35 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         });
       }, 100);
     } else {
-      // Always scroll to top for new page loads
+      // Force immediate scroll to top for all other navigation
       window.scrollTo(0, 0);
+      // Also set scroll restoration to manual to prevent browser from restoring scroll position
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+    }
+    
+    // Clear any location state after handling it
+    if (location.state?.scrollToBottom) {
+      window.history.replaceState({}, document.title);
     }
   }, [location.pathname, location.state]);
+
+  // Additional effect to handle browser back/forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      // Force scroll to top on browser back/forward
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 0);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   useEffect(() => {
     // Prevent horizontal scroll and hide vertical scrollbar
@@ -39,6 +64,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     document.documentElement.style.msOverflowStyle = 'none';
     document.body.style.scrollbarWidth = 'none';
     document.body.style.msOverflowStyle = 'none';
+    
+    // Set scroll restoration to manual to prevent browser from restoring scroll position
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
     
     // Add CSS to hide webkit scrollbars
     const style = document.createElement('style');
@@ -63,6 +93,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       document.documentElement.style.overflowX = 'auto';
       if (document.head.contains(style)) {
         document.head.removeChild(style);
+      }
+      // Reset scroll restoration when component unmounts
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
       }
     };
   }, []);

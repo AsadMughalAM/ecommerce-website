@@ -593,3 +593,13 @@ video {
 .animate-optimized.complete {
   will-change: auto;
 }
+
+/* Force scroll position reset */
+.page-container {
+  scroll-behavior: auto !important;
+}
+
+/* Disable scroll restoration globally */
+html {
+  scroll-behavior: auto;
+}

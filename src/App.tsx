@@ -9,9 +9,20 @@ import ServicesPage from './pages/ServicesPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import ToastContainer from './components/ui/ToastContainer';
 import { useToast } from './hooks/useToast';
+import { useEffect } from 'react';
 
 function App() {
   const { toasts } = useToast();
+
+  useEffect(() => {
+    // Disable scroll restoration globally
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    // Force scroll to top on initial load
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="overflow-x-hidden">
