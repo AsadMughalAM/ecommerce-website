@@ -177,7 +177,7 @@ const ProductDetailPage: React.FC = () => {
   ];
 
   return (
-    <>
+    <div>
       <SEOHead 
         title={`${product.name} - Premium ${product.category} | TORTOCRAFT`}
         description={product.longDescription}
@@ -468,7 +468,7 @@ const ProductDetailPage: React.FC = () => {
           </motion.div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
