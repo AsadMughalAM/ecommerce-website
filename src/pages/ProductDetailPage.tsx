@@ -5,6 +5,8 @@ import { products } from '../data/products';
 import Breadcrumb from '../components/ui/Breadcrumb';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
+import SEOHead from '../components/ui/SEOHead';
+import ImageWithFallback from '../components/ui/ImageWithFallback';
 import { motion } from 'framer-motion';
 
 const paymentMethods = [
@@ -175,54 +177,73 @@ const ProductDetailPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 py-10">
-      <div className="container mx-auto px-4">
-        <Breadcrumb items={breadcrumbItems} />
+    <>
+      <SEOHead 
+        title={`${product.name} - Premium ${product.category} | TORTOCRAFT`}
+        description={product.longDescription}
+        keywords={`${product.name}, ${product.category}, premium apparel, comfortable clothing, TORTOCRAFT`}
+        url={`https://tortocraft.com/product/${product.id}`}
+        image={product.image}
+        type="product"
+      />
+      <div className="min-h-screen bg-white dark:bg-gray-900 py-10">
+        <div className="container mx-auto px-4">
+          <Breadcrumb items={breadcrumbItems} />
         
-        {/* Back Button */}
-        <Link 
-          to={`/categories/${product.category}`}
-          className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors"
-        >
-          <ArrowLeft size={20} className="mr-2" />
-          Back to {product.category}
-        </Link>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Product Images */}
-          <motion.div
-            className="space-y-4"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+          {/* Back Button */}
+          <Link 
+            to={`/categories/${product.category}`}
+            className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors"
+            aria-label={`Back to ${product.category} category`}
           >
-            <div className="aspect-square bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
+            <ArrowLeft size={20} className="mr-2" />
+            Back to {product.category}
+          </Link>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Product Images */}
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="aspect-square bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
+                <ImageWithFallback
+                  src={product.image}
+                  alt={`${product.name} - Main product image`}
+                  width={600}
+                  height={600}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  priority={true}
+                />
+              </div>
             
-            {/* Thumbnail Images */}
-            <div className="grid grid-cols-4 gap-2">
-              {[...Array(4)].map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSelectedImage(index)}
-                  className={`aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden border-2 transition-colors ${
-                    selectedImage === index ? 'border-gray-900 dark:border-white' : 'border-transparent'
-                  }`}
-                >
-                  <img
-                    src={product.image}
-                    alt={`${product.name} view ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          </motion.div>
+              {/* Thumbnail Images */}
+              <div className="grid grid-cols-4 gap-2">
+                {[...Array(4)].map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImage(index)}
+                    className={`aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden border-2 transition-colors ${
+                      selectedImage === index ? 'border-gray-900 dark:border-white' : 'border-transparent'
+                    }`}
+                    aria-label={`View ${product.name} image ${index + 1}`}
+                  >
+                    <ImageWithFallback
+                      src={product.image}
+                      alt={`${product.name} view ${index + 1}`}
+                      width={150}
+                      height={150}
+                      width={90}
+                      height={40}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+              </div>
+            </motion.div>
 
           {/* Product Info */}
           <motion.div
@@ -255,6 +276,7 @@ const ProductDetailPage: React.FC = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={() => setIsLiked(!isLiked)}
+                    aria-label={isLiked ? 'Remove from favorites' : 'Add to favorites'}
                     className={`p-3 rounded-lg border transition-colors ${
                       isLiked 
                         ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-600 dark:text-red-400' 
@@ -264,7 +286,10 @@ const ProductDetailPage: React.FC = () => {
                     <Heart size={20} fill={isLiked ? 'currentColor' : 'none'} />
                   </button>
                   
-                  <button className="p-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                  <button 
+                    className="p-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                    aria-label="Share product"
+                  >
                     <Share2 size={20} />
                   </button>
                 </div>
@@ -444,7 +469,7 @@ const ProductDetailPage: React.FC = () => {
           </div>
         </motion.div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ProductGrid from '../components/ui/ProductGrid';
 import Breadcrumb from '../components/ui/Breadcrumb';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
+import SEOHead from '../components/ui/SEOHead';
 import { getProductsByCategory } from '../data/products';
 import { Product } from '../types';
 import { Filter, SortAsc } from 'lucide-react';
@@ -80,66 +81,79 @@ const CategoryPage: React.FC = () => {
   ];
 
   return (
-    <div className="py-10 md:py-16 min-h-screen">
-      <div className="container mx-auto px-4">
-        <Breadcrumb items={breadcrumbItems} />
+    <>
+      <SEOHead 
+        title={`${getCategoryTitle(category)} - Premium ${getCategoryTitle(category)} Collection | TORTOCRAFT`}
+        description={getCategoryDescription(category)}
+        keywords={`${category}, premium ${category}, comfortable ${category}, stylish ${category}, TORTOCRAFT`}
+        url={`https://tortocraft.com/categories/${category}`}
+      />
+      <div className="py-10 md:py-16 min-h-screen">
+        <div className="container mx-auto px-4">
+          <Breadcrumb items={breadcrumbItems} />
         
-        {/* Header */}
-        <div className="mb-10">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-2">
-                {getCategoryTitle(category)}
-              </h1>
-              <p className="text-gray-600 max-w-3xl">
-                {getCategoryDescription(category)}
+          {/* Header */}
+          <div className="mb-10">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] dark:text-white mb-2">
+                  {getCategoryTitle(category)}
+                </h1>
+                <p className="text-gray-600 dark:text-gray-400 max-w-3xl">
+                  {getCategoryDescription(category)}
+                </p>
+              </div>
+            
+              {/* Sort Controls */}
+              <div className="flex items-center space-x-4 mt-6 md:mt-0">
+                <div className="flex items-center space-x-2">
+                  <SortAsc size={18} className="text-gray-500 dark:text-gray-400" />
+                  <label htmlFor="sort-select" className="sr-only">Sort products</label>
+                  <select
+                    id="sort-select"
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as 'name' | 'newest')}
+                    className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                  >
+                    <option value="name">Sort by Name</option>
+                    <option value="newest">Newest First</option>
+                  </select>
+                </div>
+              
+                <button 
+                  className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
+                  aria-label="Open filter options"
+                >
+                  <Filter size={18} />
+                  <span className="text-sm">Filter</span>
+                </button>
+              </div>
+            </div>
+          
+            {/* Product Count */}
+            <div className="flex items-center justify-between py-4 border-t border-gray-200 dark:border-gray-700">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Showing {sortedProducts.length} product{sortedProducts.length !== 1 ? 's' : ''}
               </p>
             </div>
-            
-            {/* Sort Controls */}
-            <div className="flex items-center space-x-4 mt-6 md:mt-0">
-              <div className="flex items-center space-x-2">
-                <SortAsc size={18} className="text-gray-500" />
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as 'name' | 'newest')}
-                  className="border border-gray-300 rounded-lg px-3  bg-[#111827] text-white py-2 text-sm  focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]"
-                >
-                  <option value="name" >Sort by Name</option>
-                  <option value="newest">Newest First</option>
-                </select>
+          </div>
+        
+          {/* Products Grid */}
+          <ProductGrid products={sortedProducts} />
+        
+          {/* Empty State */}
+          {sortedProducts.length === 0 && (
+            <div className="text-center py-16">
+              <div className="w-24 h-24 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Filter size={32} className="text-gray-400" />
               </div>
-              
-              <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg transition-colors">
-                <Filter size={18} />
-                <span className="text-sm">Filter</span>
-              </button>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No products found</h3>
+              <p className="text-gray-600 dark:text-gray-400">Try adjusting your filters or check back later for new arrivals.</p>
             </div>
-          </div>
-          
-          {/* Product Count */}
-          <div className="flex items-center justify-between py-4 border-t border-gray-200">
-            <p className="text-sm text-gray-600">
-              Showing {sortedProducts.length} product{sortedProducts.length !== 1 ? 's' : ''}
-            </p>
-          </div>
+          )}
         </div>
-        
-        {/* Products Grid */}
-        <ProductGrid products={sortedProducts} />
-        
-        {/* Empty State */}
-        {sortedProducts.length === 0 && (
-          <div className="text-center py-16">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Filter size={32} className="text-gray-400" />
-            </div>
-            <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">No products found</h3>
-            <p className="text-gray-600">Try adjusting your filters or check back later for new arrivals.</p>
-          </div>
-        )}
       </div>
-    </div>
+    </>
   );
 };
 

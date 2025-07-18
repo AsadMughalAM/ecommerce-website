@@ -58,6 +58,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed top-0 left-0 h-full w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl z-50 lg:hidden overflow-y-auto border-r border-gray-200/20 dark:border-gray-700/20 shadow-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200/20 dark:border-gray-700/20">
@@ -72,6 +75,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 <button
                   onClick={onClose}
                   className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  aria-label="Close mobile menu"
                 >
                   <X size={24} />
                 </button>
@@ -85,13 +89,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 <input
                   type="text"
                   placeholder="Search products..."
+                  aria-label="Search products"
                   className="w-full pl-10 pr-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border border-gray-200 dark:border-gray-700 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors"
                 />
               </div>
             </div>
 
             {/* Navigation Links */}
-            <div className="p-6 space-y-2">
+            <nav className="p-6 space-y-2" role="navigation" aria-label="Mobile navigation">
               <h3 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
                 Navigation
               </h3>
@@ -120,7 +125,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                   </motion.div>
                 );
               })}
-            </div>
+            </nav>
 
             {/* Quick Categories */}
             <div className="p-6 border-t border-gray-200/20 dark:border-gray-700/20">

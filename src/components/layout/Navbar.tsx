@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
 
             {/* Desktop Navigation - Centered */}
             <div className="hidden lg:flex items-center justify-center flex-1 mx-12">
-              <div className="flex items-center space-x-8">
+              <nav className="flex items-center space-x-8" role="navigation" aria-label="Main navigation">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
                     </button>
                   </motion.div>
                 ))}
-              </div>
+              </nav>
             </div>
 
             {/* Desktop Actions */}

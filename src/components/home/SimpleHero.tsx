@@ -16,7 +16,7 @@ const SimpleHero: React.FC = () => {
           muted
           playsInline
           preload="metadata"
-          aria-hidden="true"
+          aria-label="Background video showing premium apparel"
           className="absolute top-0 left-0 w-full h-full object-cover"
           style={{
             filter: 'brightness(0.75) contrast(1.1)',
@@ -83,6 +83,7 @@ const SimpleHero: React.FC = () => {
           <Link
             to="/categories"
             className="group bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-black dark:hover:bg-gray-100 dark:hover:text-gray-900 transition-all duration-300 flex items-center shadow-xl hover:shadow-2xl hover:scale-105"
+            aria-label="Shop our premium fashion collection"
           >
             Shop Collection
             <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -90,6 +91,7 @@ const SimpleHero: React.FC = () => {
           <Link
             to="/about"
             className="group border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-all duration-300 flex items-center"
+            aria-label="Learn about TORTOCRAFT's story"
           >
             Our Story
           </Link>

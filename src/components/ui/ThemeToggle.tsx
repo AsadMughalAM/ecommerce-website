@@ -20,17 +20,20 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
           ? 'text-yellow-400' 
           : 'text-gray-300 hover:text-white'
       } ${className}`}
-      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
     >
       <div className="relative w-5 h-5">
         <Sun 
           size={18} 
+          aria-hidden="true"
           className={`absolute inset-0 transition-all duration-500 ${
             theme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-180 scale-75'
           }`} 
         />
         <Moon 
           size={18} 
+          aria-hidden="true"
           className={`absolute inset-0 transition-all duration-500 ${
             theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-75'
           }`} 
