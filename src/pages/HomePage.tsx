@@ -5,11 +5,13 @@ import Categories from '../components/home/Categories';
 
 const HomePage: React.FC = () => {
   return (
-    <div className="overflow-x-hidden">
+    <main className="overflow-x-hidden">
+      {/* SEO-friendly page structure */}
+      <h1 className="sr-only">TORTOCRAFT - Premium Fashion Collection</h1>
       <SimpleHero />
       <FeaturedProducts />
       <Categories />
-    </div>
+    </main>
   );
 };
 

@@ -16,6 +16,7 @@ const SimpleHero: React.FC = () => {
           muted
           playsInline
           preload="metadata"
+          aria-hidden="true"
           className="absolute top-0 left-0 w-full h-full object-cover"
           style={{
             filter: 'brightness(0.75) contrast(1.1)',
@@ -23,6 +24,16 @@ const SimpleHero: React.FC = () => {
           onLoadStart={() => console.log('Video loading started')}
           onCanPlay={() => console.log('Video can play')}
           onError={(e) => console.error('Video error:', e)}
+        />
+        {/* Fallback image for when video fails to load */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+          style={{
+            backgroundImage: 'url("https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.8
+          }}
         />
       </div>
 
@@ -38,7 +49,7 @@ const SimpleHero: React.FC = () => {
           className="inline-flex items-center bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-blue-200 dark:border-blue-800"
         >
           <Sparkles className="w-4 h-4 mr-2" />
-          Premium Fashion Collection 2025
+          <span>Premium Fashion Collection 2025</span>
         </motion.div>
 
         <motion.h1

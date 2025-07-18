@@ -62,6 +62,9 @@ const Footer: React.FC = () => {
                     href={social.href}
                     whileHover={{ scale: 1.1, y: -2 }}
                     className="glass p-3 rounded-full text-gray-300 hover:text-white transition-all duration-300 border border-white/10"
+                    aria-label={`Follow us on ${social.icon.name || 'social media'}`}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     <social.icon size={20} />
                   </motion.a>
@@ -151,6 +154,7 @@ const Footer: React.FC = () => {
                   key={index}
                   href="#" 
                   className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium"
+                  aria-label={`Read our ${item}`}
                 >
                   {item}
                 </a>

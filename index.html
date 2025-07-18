@@ -1,12 +1,89 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TORTOCRAFT - Premium fashion collection featuring hoodies, tracksuits, sweatshirts, and more. Discover comfort meets style with our curated apparel." />
+    <meta name="keywords" content="fashion, apparel, hoodies, tracksuits, sweatshirts, premium clothing, streetwear" />
+    <meta name="author" content="TORTOCRAFT" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tortocraft.com/" />
+    <meta property="og:title" content="TORTOCRAFT - Premium Fashion Collection" />
+    <meta property="og:description" content="Discover premium apparel that combines unmatched comfort with cutting-edge design. Where innovation meets fashion excellence." />
+    <meta property="og:image" content="https://tortocraft.com/og-image.jpg" />
+    <meta property="og:site_name" content="TORTOCRAFT" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://tortocraft.com/" />
+    <meta property="twitter:title" content="TORTOCRAFT - Premium Fashion Collection" />
+    <meta property="twitter:description" content="Discover premium apparel that combines unmatched comfort with cutting-edge design." />
+    <meta property="twitter:image" content="https://tortocraft.com/og-image.jpg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.pexels.com" />
+    <link rel="preconnect" href="https://logos-world.net" />
+    
+    <!-- DNS prefetch for performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//images.pexels.com" />
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="msapplication-TileColor" content="#0f172a" />
+    
     <title>Tortocraft - Premium Fashion Collection</title>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ClothingStore",
+      "name": "TORTOCRAFT",
+      "description": "Premium fashion collection featuring hoodies, tracksuits, sweatshirts, and more.",
+      "url": "https://tortocraft.com",
+      "logo": "https://tortocraft.com/logo.png",
+      "sameAs": [
+        "https://instagram.com/tortocraft",
+        "https://twitter.com/tortocraft",
+        "https://facebook.com/tortocraft"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7901 4th ST N STE 7236",
+        "addressLocality": "Florida City",
+        "addressRegion": "Florida",
+        "postalCode": "33702",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+92-303-5648603",
+        "contactType": "customer service",
+        "email": "tortocraft415@gmail.com"
+      }
+    }
+    </script>
   </head>
   <body>
+    <noscript>
+      <div style="text-align: center; padding: 20px; background: #f3f4f6; color: #374151;">
+        <h1>JavaScript Required</h1>
+        <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

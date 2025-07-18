@@ -45,16 +45,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
           {/* Image */}
           <div className="aspect-square relative">
             {!imageLoaded && (
-              <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" />
+              <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse flex items-center justify-center">
+                <div className="w-8 h-8 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+              </div>
             )}
             <img 
               src={product.image} 
               alt={product.name} 
+              width={400}
+              height={400}
               className={`w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               onLoad={() => setImageLoaded(true)}
+              onError={() => setImageLoaded(true)}
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -74,6 +80,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                   ? 'bg-red-500 text-white shadow-lg' 
                   : 'glass text-white hover:bg-white/20 border border-white/20'
               }`}
+              aria-label={isLiked ? 'Remove from favorites' : 'Add to favorites'}
             >
               <Heart size={16} fill={isLiked ? 'currentColor' : 'none'} />
             </button>
@@ -82,6 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               <button
                 onClick={handleQuickView}
                 className="p-3 rounded-full glass text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300 border border-white/20"
+                aria-label="Quick view product"
               >
                 <Eye size={16} />
               </button>

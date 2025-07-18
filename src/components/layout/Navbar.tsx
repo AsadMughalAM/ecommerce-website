@@ -49,6 +49,7 @@ const Navbar: React.FC = () => {
               <button
                 onClick={() => handleNavClick('/')}
                 className="text-xl font-black tracking-tight hover:text-white text-white transition-all duration-300"
+                aria-label="Go to homepage"
               >
                 TORTOCRAFT
               </button>
@@ -71,6 +72,7 @@ const Navbar: React.FC = () => {
                           ? 'text-blue-400 font-semibold'
                           : 'text-gray-300 hover:text-white'
                       }`}
+                      aria-current={location.pathname === link.path ? 'page' : undefined}
                     >
                       {link.name}
                       {/* Active indicator */}
