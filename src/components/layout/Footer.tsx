@@ -12,7 +12,8 @@ const Footer: React.FC = () => {
   };
 
   const handleContactClick = () => {
-    navigate('/contact', { state: { scrollToBottom: true } });
+    window.scrollTo(0, 0);
+    navigate('/contact');
   };
 
   const categories = [

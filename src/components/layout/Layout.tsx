@@ -10,38 +10,21 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
 
-  // Force scroll to top on every route change
+  // Handle scroll behavior on route changes
   useEffect(() => {
-    // Check if we're navigating to contact page and should scroll to bottom
-    const shouldScrollToBottom = location.state?.scrollToBottom;
+    // Always scroll to top immediately on route change
+    window.scrollTo(0, 0);
     
-    if (shouldScrollToBottom) {
-      // Small delay to ensure page is rendered, then scroll to bottom
-      setTimeout(() => {
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: 'smooth'
-        });
-      }, 100);
-    } else {
-      // Force immediate scroll to top for all other navigation
-      window.scrollTo(0, 0);
-      // Also set scroll restoration to manual to prevent browser from restoring scroll position
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-      }
-    }
-    
-    // Clear any location state after handling it
-    if (location.state?.scrollToBottom) {
-      window.history.replaceState({}, document.title);
+    // Set scroll restoration to manual to prevent browser from restoring scroll position
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
     }
   }, [location.pathname, location.state]);
 
-  // Additional effect to handle browser back/forward navigation
+  // Handle browser back/forward navigation
   useEffect(() => {
     const handlePopState = () => {
-      // Force scroll to top on browser back/forward
+      // Scroll to top on browser back/forward
       setTimeout(() => {
         window.scrollTo(0, 0);
       }, 0);

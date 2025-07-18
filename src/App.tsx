@@ -15,12 +15,12 @@ function App() {
   const { toasts } = useToast();
 
   useEffect(() => {
-    // Disable scroll restoration globally
+    // Set scroll restoration to manual globally
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
     
-    // Force scroll to top on initial load
+    // Scroll to top on initial load
     window.scrollTo(0, 0);
   }, []);
 
