@@ -235,8 +235,6 @@ const ProductDetailPage: React.FC = () => {
                       alt={`${product.name} view ${index + 1}`}
                       width={150}
                       height={150}
-                      width={90}
-                      height={40}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
@@ -245,229 +243,230 @@ const ProductDetailPage: React.FC = () => {
               </div>
             </motion.div>
 
-          {/* Product Info */}
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div>
-              <Badge variant="secondary" className="mb-3">
-                {product.category}
-              </Badge>
-              
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                {product.name}
-              </h1>
-              
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                {product.description}
-              </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link to="/contact" className="flex-1">
-                  <Button size="lg" className="w-full bg-gray-900 dark:bg-white hover:bg-black dark:hover:bg-gray-100">
-                    Order Now
-                  </Button>
-                </Link>
+            {/* Product Info */}
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div>
+                <Badge variant="secondary" className="mb-3">
+                  {product.category}
+                </Badge>
                 
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setIsLiked(!isLiked)}
-                    aria-label={isLiked ? 'Remove from favorites' : 'Add to favorites'}
-                    className={`p-3 rounded-lg border transition-colors ${
-                      isLiked 
-                        ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-600 dark:text-red-400' 
-                        : 'border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    <Heart size={20} fill={isLiked ? 'currentColor' : 'none'} />
-                  </button>
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  {product.name}
+                </h1>
+                
+                <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                  {product.description}
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <Link to="/contact" className="flex-1">
+                    <Button size="lg" className="w-full bg-gray-900 dark:bg-white hover:bg-black dark:hover:bg-gray-100">
+                      Order Now
+                    </Button>
+                  </Link>
                   
-                  <button 
-                    className="p-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                    aria-label="Share product"
-                  >
-                    <Share2 size={20} />
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setIsLiked(!isLiked)}
+                      aria-label={isLiked ? 'Remove from favorites' : 'Add to favorites'}
+                      className={`p-3 rounded-lg border transition-colors ${
+                        isLiked 
+                          ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-600 dark:text-red-400' 
+                          : 'border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+                      }`}
+                    >
+                      <Heart size={20} fill={isLiked ? 'currentColor' : 'none'} />
+                    </button>
+                    
+                    <button 
+                      className="p-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                      aria-label="Share product"
+                    >
+                      <Share2 size={20} />
+                    </button>
+                  </div>
                 </div>
+              </div>
+
+              {/* Features */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6 border-t border-gray-200 dark:border-gray-700">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                    <Truck size={18} className="text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900 dark:text-white">Free Shipping</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">On orders over $75</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                    <RotateCcw size={18} className="text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900 dark:text-white">Easy Returns</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">30-day policy</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                    <Shield size={18} className="text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900 dark:text-white">Quality Guarantee</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Premium materials</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Product Details */}
+          <motion.div
+            className="max-w-4xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Product Details</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
+                  {product.longDescription}
+                </p>
               </div>
             </div>
+          </motion.div>
 
-            {/* Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6 border-t border-gray-200 dark:border-gray-700">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
-                  <Truck size={18} className="text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900 dark:text-white">Free Shipping</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">On orders over $75</p>
+          {/* Auto Infinite Payment Methods Slider */}
+          <motion.div
+            className="max-w-6xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                Guaranteed Safe Checkout
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Secure payment processing with trusted global payment partners
+              </p>
+            </div>
+
+            {/* Slider Container */}
+            <div 
+              className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden"
+              onMouseEnter={() => setIsAutoPlaying(false)}
+              onMouseLeave={() => setIsAutoPlaying(true)}
+            >
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20"></div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white dark:bg-gray-700 rounded-full shadow-lg border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:shadow-xl hover:scale-110 transition-all duration-300 group"
+              >
+                <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+              </button>
+
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white dark:bg-gray-700 rounded-full shadow-lg border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:shadow-xl hover:scale-110 transition-all duration-300 group"
+              >
+                <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              {/* Slider Content */}
+              <div className="mx-16 relative">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 min-h-[140px]">
+                  {getVisibleMethods().map((method, index) => (
+                    <motion.div
+                      key={method.key}
+                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                      transition={{ 
+                        duration: 0.5, 
+                        delay: index * 0.1,
+                        ease: "easeOut"
+                      }}
+                      className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-300 group cursor-pointer transform hover:scale-105"
+                    >
+                      <div className="flex flex-col items-center text-center space-y-3">
+                        {/* Icon and Image Container */}
+                        <div className="w-24 h-12 flex items-center justify-center bg-white dark:bg-gray-600 rounded-lg group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-all duration-300 p-2 shadow-sm relative">
+                          <img
+                            src={method.img}
+                            alt={method.name}
+                            className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-transform duration-300"
+                            loading="lazy"
+                            onError={(e) => handleImgError(e, method)}
+                            style={{ maxWidth: '90px', maxHeight: '40px' }}
+                          />
+                          {/* Fallback Icon */}
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-opacity duration-300 text-blue-600 dark:text-blue-400">
+                            {method.icon}
+                          </div>
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            {method.name}
+                          </h3>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 leading-tight">
+                            {method.description}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
-              
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
-                  <RotateCcw size={18} className="text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900 dark:text-white">Easy Returns</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">30-day policy</p>
-                </div>
+
+              {/* Slide Indicators */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {paymentMethods.slice(0, Math.ceil(paymentMethods.length / slidesToShow)).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index * slidesToShow)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      Math.floor(currentSlide / slidesToShow) === index
+                        ? 'bg-blue-600 dark:bg-blue-400 w-6'
+                        : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                    }`}
+                  />
+                ))}
               </div>
-              
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
-                  <Shield size={18} className="text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900 dark:text-white">Quality Guarantee</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Premium materials</p>
-                </div>
+            </div>
+            
+            {/* Security Badges */}
+            <div className="flex justify-center items-center space-x-6 mt-8">
+              <div className="flex items-center space-x-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-4 py-2 rounded-full border border-green-200 dark:border-green-800">
+                <Shield size={16} />
+                <span className="text-sm font-medium">SSL Secured</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 px-4 py-2 rounded-full border border-blue-200 dark:border-blue-800">
+                <Shield size={16} />
+                <span className="text-sm font-medium">100% Safe</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 px-4 py-2 rounded-full border border-purple-200 dark:border-purple-800">
+                <Shield size={16} />
+                <span className="text-sm font-medium">Verified</span>
               </div>
             </div>
           </motion.div>
         </div>
-
-        {/* Product Details */}
-        <motion.div
-          className="max-w-4xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Product Details</h2>
-            <div className="prose prose-gray dark:prose-invert max-w-none">
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
-                {product.longDescription}
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Auto Infinite Payment Methods Slider */}
-        <motion.div
-          className="max-w-6xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
-              Guaranteed Safe Checkout
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Secure payment processing with trusted global payment partners
-            </p>
-          </div>
-
-          {/* Slider Container */}
-          <div 
-            className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden"
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-          >
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20"></div>
-            </div>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white dark:bg-gray-700 rounded-full shadow-lg border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:shadow-xl hover:scale-110 transition-all duration-300 group"
-            >
-              <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-            </button>
-
-            <button
-              onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white dark:bg-gray-700 rounded-full shadow-lg border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:shadow-xl hover:scale-110 transition-all duration-300 group"
-            >
-              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            {/* Slider Content */}
-            <div className="mx-16 relative">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 min-h-[140px]">
-                {getVisibleMethods().map((method, index) => (
-                  <motion.div
-                    key={method.key}
-                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                    transition={{ 
-                      duration: 0.5, 
-                      delay: index * 0.1,
-                      ease: "easeOut"
-                    }}
-                    className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-300 group cursor-pointer transform hover:scale-105"
-                  >
-                    <div className="flex flex-col items-center text-center space-y-3">
-                      {/* Icon and Image Container */}
-                      <div className="w-24 h-12 flex items-center justify-center bg-white dark:bg-gray-600 rounded-lg group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-all duration-300 p-2 shadow-sm relative">
-                        <img
-                          src={method.img}
-                          alt={method.name}
-                          className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-transform duration-300"
-                          loading="lazy"
-                          onError={(e) => handleImgError(e, method)}
-                          style={{ maxWidth: '90px', maxHeight: '40px' }}
-                        />
-                        {/* Fallback Icon */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-opacity duration-300 text-blue-600 dark:text-blue-400">
-                          {method.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                          {method.name}
-                        </h3>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 leading-tight">
-                          {method.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Slide Indicators */}
-            <div className="flex justify-center mt-6 space-x-2">
-              {paymentMethods.slice(0, Math.ceil(paymentMethods.length / slidesToShow)).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index * slidesToShow)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentSlide / slidesToShow) === index
-                      ? 'bg-blue-600 dark:bg-blue-400 w-6'
-                      : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-          
-          {/* Security Badges */}
-          <div className="flex justify-center items-center space-x-6 mt-8">
-            <div className="flex items-center space-x-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-4 py-2 rounded-full border border-green-200 dark:border-green-800">
-              <Shield size={16} />
-              <span className="text-sm font-medium">SSL Secured</span>
-            </div>
-            <div className="flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 px-4 py-2 rounded-full border border-blue-200 dark:border-blue-800">
-              <Shield size={16} />
-              <span className="text-sm font-medium">100% Safe</span>
-            </div>
-            <div className="flex items-center space-x-2 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 px-4 py-2 rounded-full border border-purple-200 dark:border-purple-800">
-              <Shield size={16} />
-              <span className="text-sm font-medium">Verified</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </>
   );
