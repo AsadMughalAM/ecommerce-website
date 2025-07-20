@@ -20,18 +20,18 @@ const Categories: React.FC = () => {
   ];
 
   return (
-    <section className="section-padding bg-gray-50 dark:bg-gray-800" data-scroll-section>
+    <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800" data-scroll-section>
       <div className="container mx-auto px-4">
-        <div className="mb-12 text-center animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+        <div className="mb-16 text-center animate-fade-in">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
             Shop by Category
           </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Explore our diverse range of apparel, crafted with premium materials and care.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
           {categories.map((category, index) => (
             <CategoryCard 
               key={index}

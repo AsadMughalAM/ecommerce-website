@@ -310,6 +310,23 @@
     animation: scaleIn 0.5s ease-out forwards;
   }
   
+  /* Enhanced hover effects for category cards */
+  .category-card-hover {
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .category-card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Backdrop blur support */
+  @supports (backdrop-filter: blur(10px)) {
+    .backdrop-blur-sm {
+      backdrop-filter: blur(4px);
+    }
+  }
+  
   /* Layout utilities */
   .container-fluid {
     width: 100%;
