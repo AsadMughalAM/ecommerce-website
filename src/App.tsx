@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import Layout from './components/layout/Layout';
+import ScrollToTop from './components/ui/ScrollToTop';
 import ToastContainer from './components/ui/ToastContainer';
 import ErrorBoundary from './components/ui/ErrorBoundary';
 import LoadingSpinner from './components/ui/LoadingSpinner';
@@ -42,7 +43,7 @@ function App() {
   }, []);
 
   return (
-    <div className="overflow-x-hidden" id="app-root">
+    <div className="overflow-x-hidden overflow-y-scroll" id="app-root" style={{ minHeight: '100vh' }}>
       <a 
         href="#main-content" 
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50"
@@ -51,6 +52,7 @@ function App() {
       </a>
       <ErrorBoundary>
         <Router>
+          <ScrollToTop />
           <Layout>
             <main id="main-content">
               <Suspense fallback={<PageLoader />}>

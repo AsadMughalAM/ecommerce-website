@@ -2,34 +2,43 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import apparel from "../../assets/apparel-vedio1.mp4";
+import { useState } from "react";
+
 
 const SimpleHero: React.FC = () => {
+  const [videoError, setVideoError] = useState(false);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          src={apparel}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-label="Background video showing premium apparel"
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          style={{
-            filter: 'brightness(0.75) contrast(1.1)',
-          }}
-          onLoadStart={() => console.log('Video loading started')}
-          onCanPlay={() => console.log('Video can play')}
-          onError={(e) => console.error('Video error:', e)}
-        />
-        {/* Fallback image for when video fails to load */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
+        {!videoError && (
+          <video
+            src={apparel}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="Background video showing premium apparel"
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            style={{
+              filter: 'brightness(0.75) contrast(1.1)',
+            }}
+            onLoadStart={() => setVideoError(false)}
+            onCanPlay={() => setVideoError(false)}
+            onError={() => setVideoError(true)}
+          />
+        )}
+        {/* Fallback overlay only if video fails to load */}
+        {videoError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 z-20">
+            <span className="text-white text-lg font-semibold bg-black/60 px-6 py-3 rounded-lg">Video unavailable. Please check your connection or try again later.</span>
+          </div>
+        )}
       </div>
 
       {/* Gradient overlay for contrast */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/40 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/40 z-10 pointer-events-none"></div>
 
       {/* Content */}
       <div className="relative z-20 text-center px-4 max-w-6xl mx-auto sm:mb-15 mb-10">
@@ -46,7 +55,7 @@ const SimpleHero: React.FC = () => {
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
+        <p className="text-xl md:text-2xl text-gray-300 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
           Discover premium apparel that combines unmatched comfort with cutting-edge design. Where innovation meets fashion excellence.
         </p>
 

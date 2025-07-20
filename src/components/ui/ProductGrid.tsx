@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '../../types';
 import ProductCard from './ProductCard';
 import Modal from './Modal';
@@ -61,15 +62,20 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, showQuickView = tru
                 </p>
               </div>
               <div className="flex space-x-3">
-                <button 
+                <Link
+                  to={`/product/${selectedProduct.id}`}
+                  className="flex-1 bg-[#1A1A1A] text-white py-3 px-6 rounded-lg font-medium hover:bg-black transition-colors text-center"
                   onClick={closeQuickView}
-                  className="flex-1 bg-[#1A1A1A] text-white py-3 px-6 rounded-lg font-medium hover:bg-black transition-colors"
                 >
                   View Full Details
-                </button>
-                <button className="px-6 py-3 border border-[#1A1A1A] text-[#1A1A1A] rounded-lg font-medium hover:bg-[#F7F2EA] transition-colors">
+                </Link>
+                <Link
+                  to="/contact"
+                  className="px-6 py-3 border border-[#1A1A1A] text-[#1A1A1A] rounded-lg font-medium hover:bg-[#F7F2EA] transition-colors text-center"
+                  onClick={closeQuickView}
+                >
                   Contact Us
-                </button>
+                </Link>
               </div>
             </div>
           </div>

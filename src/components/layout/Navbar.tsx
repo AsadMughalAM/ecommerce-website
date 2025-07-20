@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import ThemeToggle from '../ui/ThemeToggle';
 import MobileMenu from './MobileMenu';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -21,10 +20,6 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(false);
   }, [location]);
 
-  const handleNavClick = (path: string) => {
-    window.scrollTo(0, 0);
-    navigate(path);
-  };
 
   // Dark mode navbar styling to match reference image
   const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 dark:bg-gray-900 border-b border-gray-800 dark:border-gray-800`;
@@ -36,13 +31,13 @@ const Navbar: React.FC = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <button
-                onClick={() => handleNavClick('/')}
+              <Link
+                to="/"
                 className="text-xl font-black tracking-tight hover:text-white text-white transition-all duration-300 hover:scale-105"
                 aria-label="Go to homepage"
               >
                 TORTOCRAFT
-              </button>
+              </Link>
             </div>
 
             {/* Desktop Navigation - Centered */}
@@ -50,8 +45,8 @@ const Navbar: React.FC = () => {
               <nav className="flex items-center space-x-8" role="navigation" aria-label="Main navigation">
                 {navLinks.map((link, index) => (
                   <div key={link.name} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <button
-                      onClick={() => handleNavClick(link.path)}
+                    <Link
+                      to={link.path}
                       className={`text-sm font-medium tracking-wide transition-all duration-300 relative group py-2 ${
                         location.pathname === link.path
                           ? 'text-blue-400 font-semibold'
@@ -64,7 +59,7 @@ const Navbar: React.FC = () => {
                       {location.pathname === link.path && (
                         <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400" />
                       )}
-                    </button>
+                    </Link>
                   </div>
                 ))}
               </nav>

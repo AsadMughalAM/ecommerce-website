@@ -1,18 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import { Instagram, Twitter, Facebook, Youtube, Mail, MapPin, Phone } from 'lucide-react';
 
+
 const Footer: React.FC = () => {
-  const navigate = useNavigate();
 
   const handleNavClick = (path: string) => {
     window.scrollTo(0, 0);
-    navigate(path);
-  };
-
-  const handleContactClick = () => {
-    window.scrollTo(0, 0);
-    navigate('/contact');
+    window.location.href = path;
   };
 
   const categories = [
@@ -100,12 +96,12 @@ const Footer: React.FC = () => {
               </ul>
 
               {/* Quick Contact Button */}
-              <button
-                onClick={handleContactClick}
-                className="mt-6 w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm border border-gray-700 hover:border-gray-600 hover:scale-105"
+              <Link
+                to="/contact"
+                className="mt-6 w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm border border-gray-700 hover:border-gray-600 hover:scale-105 text-center block"
               >
                 Get In Touch →
-              </button>
+              </Link>
             </div>
           </div>
         </div>
