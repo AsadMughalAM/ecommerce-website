@@ -603,3 +603,17 @@ video {
 html {
   scroll-behavior: auto;
 }
+
+/* Additional animation utilities for mobile menu */
+.animate-slide-in-left {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
