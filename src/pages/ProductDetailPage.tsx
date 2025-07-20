@@ -7,7 +7,6 @@ import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 import SEOHead from '../components/ui/SEOHead';
 import ImageWithFallback from '../components/ui/ImageWithFallback';
-import { motion } from 'framer-motion';
 
 const paymentMethods = [
   { 
@@ -202,12 +201,7 @@ const ProductDetailPage: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             {/* Product Images */}
-            <motion.div
-              className="space-y-4"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="space-y-4 animate-slide-up">
               <div className="aspect-square bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
                 <ImageWithFallback
                   src={product.image}
@@ -241,15 +235,10 @@ const ProductDetailPage: React.FC = () => {
                   </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* Product Info */}
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
+            <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <div>
                 <Badge variant="secondary" className="mb-3">
                   {product.category}
@@ -326,16 +315,11 @@ const ProductDetailPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Product Details */}
-          <motion.div
-            className="max-w-4xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          <div className="max-w-4xl mx-auto mb-16 animate-scale-in" style={{ animationDelay: '0.4s' }}>
             <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Product Details</h2>
               <div className="prose prose-gray dark:prose-invert max-w-none">
@@ -344,15 +328,10 @@ const ProductDetailPage: React.FC = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Auto Infinite Payment Methods Slider */}
-          <motion.div
-            className="max-w-6xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
+          <div className="max-w-6xl mx-auto animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
                 Guaranteed Safe Checkout
@@ -392,17 +371,10 @@ const ProductDetailPage: React.FC = () => {
               <div className="mx-16 relative">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 min-h-[140px]">
                   {getVisibleMethods().map((method, index) => (
-                    <motion.div
+                    <div
                       key={method.key}
-                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                      transition={{ 
-                        duration: 0.5, 
-                        delay: index * 0.1,
-                        ease: "easeOut"
-                      }}
-                      className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-300 group cursor-pointer transform hover:scale-105"
+                      className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-300 group cursor-pointer transform hover:scale-105 animate-scale-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
                     >
                       <div className="flex flex-col items-center text-center space-y-3">
                         {/* Icon and Image Container */}
@@ -429,7 +401,7 @@ const ProductDetailPage: React.FC = () => {
                           </p>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -465,7 +437,7 @@ const ProductDetailPage: React.FC = () => {
                 <span className="text-sm font-medium">Verified</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

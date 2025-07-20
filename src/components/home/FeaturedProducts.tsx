@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Star } from 'lucide-react';
 import ProductGrid from '../ui/ProductGrid';
 import { getFeaturedProducts } from '../../data/products';
-import { motion } from 'framer-motion';
 
 const FeaturedProducts: React.FC = () => {
   const featuredProducts = getFeaturedProducts();
@@ -12,15 +11,7 @@ const FeaturedProducts: React.FC = () => {
     <section className="section-padding bg-white dark:bg-gray-900" data-scroll-section>
       <div className="container mx-auto px-4">
         {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          data-scroll
-          data-scroll-speed="1"
-        >
+        <div className="text-center mb-16 animate-fade-in">
           <div className="inline-flex items-center glass px-6 py-3 rounded-full mb-6 border border-gray-200 dark:border-gray-700">
             <Star className="text-yellow-500 mr-2" size={16} />
             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide">
@@ -36,30 +27,15 @@ const FeaturedProducts: React.FC = () => {
             Discover our most popular items, carefully selected for their exceptional quality, 
             comfort, and timeless style that our customers love.
           </p>
-        </motion.div>
+        </div>
 
         {/* Product Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          data-scroll
-          data-scroll-speed="0.5"
-        >
+        <div className="animate-slide-up">
           <ProductGrid products={featuredProducts} />
-        </motion.div>
+        </div>
 
         {/* CTA Section */}
-        <motion.div
-          className="text-center mt-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          data-scroll
-          data-scroll-speed="0.3"
-        >
+        <div className="text-center mt-20 animate-scale-in">
           <div 
             className="relative rounded-3xl p-12 md:p-16 overflow-hidden"
             style={{
@@ -92,7 +68,7 @@ const FeaturedProducts: React.FC = () => {
             <div className="absolute top-6 right-6 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
             <div className="absolute bottom-6 left-6 w-20 h-20 bg-white/5 rounded-full blur-xl"></div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

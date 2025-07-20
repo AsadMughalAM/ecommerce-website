@@ -1,7 +1,6 @@
 import React from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
-import { motion } from 'framer-motion';
 
 interface ThemeToggleProps {
   className?: string;
@@ -11,11 +10,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <motion.button
+    <button
       onClick={toggleTheme}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className={`relative p-2.5 rounded-lg transition-all duration-300 hover:bg-gray-800 ${
+      className={`relative p-2.5 rounded-lg transition-all duration-300 hover:bg-gray-800 hover:scale-105 active:scale-95 ${
         theme === 'dark' 
           ? 'text-yellow-400' 
           : 'text-gray-300 hover:text-white'
@@ -39,7 +36,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
           }`} 
         />
       </div>
-    </motion.button>
+    </button>
   );
 };
 

@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
 import ImageWithFallback from '../ui/ImageWithFallback';
 
 interface CategoryCardProps {
@@ -14,12 +13,7 @@ interface CategoryCardProps {
 
 const CategoryCard: React.FC<CategoryCardProps> = React.memo(({ title, image, link, index }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <div className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
       <Link 
         to={link}
         className="group relative overflow-hidden rounded-2xl h-80 flex items-end transition-transform duration-500 hover:scale-[1.02] block"
@@ -42,7 +36,7 @@ const CategoryCard: React.FC<CategoryCardProps> = React.memo(({ title, image, li
           </span>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 });
 

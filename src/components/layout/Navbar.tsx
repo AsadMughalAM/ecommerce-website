@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import ThemeToggle from '../ui/ThemeToggle';
 import MobileMenu from './MobileMenu';
-import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -32,39 +31,25 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <motion.nav 
-        className={navbarClasses}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
+      <nav className={`${navbarClasses} animate-slide-up`}>
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-              className="flex-shrink-0"
-            >
+            <div className="flex-shrink-0">
               <button
                 onClick={() => handleNavClick('/')}
-                className="text-xl font-black tracking-tight hover:text-white text-white transition-all duration-300"
+                className="text-xl font-black tracking-tight hover:text-white text-white transition-all duration-300 hover:scale-105"
                 aria-label="Go to homepage"
               >
                 TORTOCRAFT
               </button>
-            </motion.div>
+            </div>
 
             {/* Desktop Navigation - Centered */}
             <div className="hidden lg:flex items-center justify-center flex-1 mx-12">
               <nav className="flex items-center space-x-8" role="navigation" aria-label="Main navigation">
                 {navLinks.map((link, index) => (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.4 }}
-                  >
+                  <div key={link.name} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                     <button
                       onClick={() => handleNavClick(link.path)}
                       className={`text-sm font-medium tracking-wide transition-all duration-300 relative group py-2 ${
@@ -77,15 +62,10 @@ const Navbar: React.FC = () => {
                       {link.name}
                       {/* Active indicator */}
                       {location.pathname === link.path && (
-                        <motion.div
-                          layoutId="activeTab"
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400"
-                          initial={false}
-                          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                        />
+                        <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400" />
                       )}
                     </button>
-                  </motion.div>
+                  </div>
                 ))}
               </nav>
             </div>
@@ -100,19 +80,17 @@ const Navbar: React.FC = () => {
             <div className="lg:hidden flex items-center space-x-2">
               <ThemeToggle />
               
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300"
+                className="p-2.5 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300 hover:scale-105 active:scale-95"
                 aria-label="Toggle mobile menu"
               >
                 <Menu size={20} />
-              </motion.button>
+              </button>
             </div>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile Menu */}
       <MobileMenu 

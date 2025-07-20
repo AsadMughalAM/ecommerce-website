@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { X, Home, Grid3X3, Briefcase, User, Phone, Search } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '../ui/ThemeToggle';
 
 interface MobileMenuProps {
@@ -39,25 +38,18 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden"
+          <div
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden animate-fade-in"
             onClick={onClose}
           />
           
           {/* Menu */}
-          <motion.div
-            initial={{ x: '-100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 left-0 h-full w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl z-50 lg:hidden overflow-y-auto border-r border-gray-200/20 dark:border-gray-700/20 shadow-2xl"
+          <div
+            className="fixed top-0 left-0 h-full w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl z-50 lg:hidden overflow-y-auto border-r border-gray-200/20 dark:border-gray-700/20 shadow-2xl animate-slide-in-left"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
@@ -105,12 +97,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 const isActive = location.pathname === link.path;
                 
                 return (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
+                  <div key={link.name} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                     <button
                       onClick={() => handleNavClick(link.path)}
                       className={`flex items-center space-x-3 p-4 rounded-xl transition-all duration-300 w-full text-left ${
@@ -122,7 +109,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                       <Icon size={20} />
                       <span className="font-semibold">{link.name}</span>
                     </button>
-                  </motion.div>
+                  </div>
                 );
               })}
             </nav>
@@ -134,19 +121,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
               </h3>
               <div className="grid grid-cols-2 gap-3">
                 {categories.map((category, index) => (
-                  <motion.div
-                    key={category.title}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + index * 0.05 }}
-                  >
+                  <div key={category.title} className="animate-fade-in" style={{ animationDelay: `${0.5 + index * 0.05}s` }}>
                     <button
                       onClick={() => handleNavClick(category.link)}
                       className="block text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 font-medium w-full text-left"
                     >
                       {category.title}
                     </button>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -157,10 +139,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 © 2024 TORTOCRAFT. All rights reserved.
               </p>
             </div>
-          </motion.div>
+          </div>
         </>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 

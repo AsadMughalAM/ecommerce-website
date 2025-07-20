@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
 import apparel from "../../assets/apparel-vedio1.mp4";
 
 const SimpleHero: React.FC = () => {
@@ -34,44 +33,24 @@ const SimpleHero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-20 text-center px-4 max-w-6xl mx-auto sm:mb-15 mb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-blue-200 dark:border-blue-800"
-        >
+        <div className="inline-flex items-center bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-blue-200 dark:border-blue-800 animate-fade-in">
           <Sparkles className="w-4 h-4 mr-2" />
           <span>Premium Fashion Collection 2025</span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent dark:text-white mb-8 leading-tight"
-        >
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent dark:text-white mb-8 leading-tight animate-slide-up">
           TORTOCRAFT
           <br />
           <span className="text-white dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 dark:bg-clip-text dark:text-transparent">
             YOUR STYLE
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-        >
+        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
           Discover premium apparel that combines unmatched comfort with cutting-edge design. Where innovation meets fashion excellence.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
-        >
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-scale-in">
           <Link
             to="/categories"
             className="group bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-black dark:hover:bg-gray-100 dark:hover:text-gray-900 transition-all duration-300 flex items-center shadow-xl hover:shadow-2xl hover:scale-105"
@@ -87,20 +66,12 @@ const SimpleHero: React.FC = () => {
           >
             Our Story
           </Link>
-        </motion.div>
+        </div>
       </div>
 
       {/* Floating Blurs */}
-      <motion.div
-        className="absolute top-1/4 left-10 w-20 h-20 bg-blue-500/20 rounded-full blur-xl"
-        animate={{ y: [0, -20, 0], scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-10 w-16 h-16 bg-purple-500/20 rounded-full blur-xl"
-        animate={{ y: [0, 15, 0], x: [0, 10, 0], opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
+      <div className="absolute top-1/4 left-10 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-float" />
+      <div className="absolute bottom-1/4 right-10 w-16 h-16 bg-purple-500/20 rounded-full blur-xl animate-float" />
     </section>
   );
 };

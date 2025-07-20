@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Instagram, Twitter, Facebook, Youtube, Mail, MapPin, Phone } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
@@ -40,12 +39,7 @@ const Footer: React.FC = () => {
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {/* Company Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            <div className="animate-fade-in">
               <h3 className="text-3xl font-black mb-6 text-white">TORTOCRAFT</h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 Premium apparel designed for comfort and style. Elevate your wardrobe with our curated collection of modern essentials.
@@ -57,51 +51,38 @@ const Footer: React.FC = () => {
                   { icon: Facebook, href: "#" },
                   { icon: Youtube, href: "#" }
                 ].map((social, index) => (
-                  <motion.a
+                  <a
                     key={index}
                     href={social.href}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="glass p-3 rounded-full text-gray-300 hover:text-white transition-all duration-300 border border-white/10"
+                    className="glass p-3 rounded-full text-gray-300 hover:text-white transition-all duration-300 border border-white/10 hover:scale-110 hover:-translate-y-1"
                     aria-label={`Follow us on ${social.icon.name || 'social media'}`}
                     rel="noopener noreferrer"
                     target="_blank"
                   >
                     <social.icon size={20} />
-                  </motion.a>
+                  </a>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* All Categories - Professional Grid Layout */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
+            <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
               <h4 className="text-lg font-bold mb-6 text-white">Shop Categories</h4>
               <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                 {categories.map((category, index) => (
-                  <motion.button
+                  <button
                     key={index}
                     onClick={() => handleNavClick(category.path)}
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                    className="text-left text-gray-300 hover:text-white transition-colors duration-300 font-medium text-sm py-1 hover:bg-gray-800/30 px-2 rounded-md"
+                    className="text-left text-gray-300 hover:text-white transition-all duration-300 font-medium text-sm py-1 hover:bg-gray-800/30 px-2 rounded-md hover:translate-x-1"
                   >
                     {category.name}
-                  </motion.button>
+                  </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* Contact */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <h4 className="text-lg font-bold mb-6 text-white">Contact Us</h4>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -119,36 +100,23 @@ const Footer: React.FC = () => {
               </ul>
 
               {/* Quick Contact Button */}
-              <motion.button
+              <button
                 onClick={handleContactClick}
-                whileHover={{ scale: 1.02 }}
-                className="mt-6 w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm border border-gray-700 hover:border-gray-600"
+                className="mt-6 w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm border border-gray-700 hover:border-gray-600 hover:scale-105"
               >
                 Get In Touch →
-              </motion.button>
-            </motion.div>
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <motion.p 
-              className="text-gray-400 text-sm mb-4 md:mb-0"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            <p className="text-gray-400 text-sm mb-4 md:mb-0 animate-fade-in">
               &copy; {new Date().getFullYear()} TORTOCRAFT. All rights reserved.
-            </motion.p>
-            <motion.div 
-              className="flex space-x-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            </p>
+            <div className="flex space-x-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               {['Privacy Policy', 'Terms of Service', 'Shipping', 'Returns'].map((item, index) => (
                 <a 
                   key={index}
@@ -159,7 +127,7 @@ const Footer: React.FC = () => {
                   {item}
                 </a>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
