@@ -26,19 +26,11 @@ const SimpleHero: React.FC = () => {
           onError={(e) => console.error('Video error:', e)}
         />
         {/* Fallback image for when video fails to load */}
-        <div 
-          className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
-          style={{
-            backgroundImage: 'url("https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.8
-          }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
       </div>
 
       {/* Gradient overlay for contrast */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 opacity-50 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/40 z-10"></div>
 
       {/* Content */}
       <div className="relative z-20 text-center px-4 max-w-6xl mx-auto sm:mb-15 mb-10">
