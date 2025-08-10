@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Instagram, Twitter, Facebook, Youtube, Mail, MapPin, Phone } from 'lucide-react';
+import { Instagram, Twitter, Facebook, Youtube, Mail, MapPin, /*Phone*/ } from 'lucide-react';
 
 
 const Footer: React.FC = () => {
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
               </p>
               <div className="flex space-x-4">
                 {[
-                  { icon: Instagram, href: "#" },
+                  { icon: Instagram, href: "https://www.instagram.com/tortocraft143/" },
                   { icon: Twitter, href: "#" },
                   { icon: Facebook, href: "#" },
                   { icon: Youtube, href: "#" }
@@ -85,10 +85,10 @@ const Footer: React.FC = () => {
                   <MapPin size={18} className="mr-3 mt-1 flex-shrink-0 text-gray-400" />
                   <span className="text-gray-300 leading-relaxed">7901 4th ST N STE 7236,Florida City, Florida 33702</span>
                 </li>
-                <li className="flex items-center">
+                {/* <li className="flex items-center">
                   <Phone size={18} className="mr-3 flex-shrink-0 text-gray-400" />
                   <span className="text-gray-300">+92 303 5648603</span>
-                </li>
+                </li> */}
                 <li className="flex items-center">
                   <Mail size={18} className="mr-3 flex-shrink-0 text-gray-400" />
                   <span className="text-gray-300">tortocraft415@gmail.com</span>

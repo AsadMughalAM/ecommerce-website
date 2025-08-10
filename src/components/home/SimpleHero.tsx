@@ -11,24 +11,46 @@ const SimpleHero: React.FC = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full">
-        {!videoError && (
-          <video
-            src={apparel}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            aria-label="Background video showing premium apparel"
-            className="absolute top-0 left-0 w-full h-full object-cover"
-            style={{
-              filter: 'brightness(0.75) contrast(1.1)',
-            }}
-            onLoadStart={() => setVideoError(false)}
-            onCanPlay={() => setVideoError(false)}
-            onError={() => setVideoError(true)}
-          />
-        )}
+          {!videoError && (
+            <video
+              src={apparel}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Background video showing premium apparel"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              style={{
+                filter: 'brightness(0.75) contrast(1.1)',
+                minHeight: '100vh',
+                minWidth: '100vw',
+                maxHeight: '100%',
+                maxWidth: '100%',
+              }}
+              onLoadStart={() => setVideoError(false)}
+              onCanPlay={() => setVideoError(false)}
+              onError={() => setVideoError(true)}
+            />
+          )}
+          {/* Mobile-specific fallback if video is hidden or not visible */}
+          <style>{`
+            @media (max-width: 640px) {
+              video[aria-label="Background video showing premium apparel"] {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                min-width: 100vw !important;
+                min-height: 100vh !important;
+                object-fit: cover !important;
+                z-index: 1 !important;
+                display: block !important;
+                background: #111;
+              }
+            }
+          `}</style>
         {/* Fallback overlay only if video fails to load */}
         {videoError && (
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 z-20">

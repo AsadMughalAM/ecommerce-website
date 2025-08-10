@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 
 import emailjs from "@emailjs/browser";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, /*Phone,*/ MapPin } from "lucide-react";
 import Button from "../components/ui/Button";
 
 const ContactPage: React.FC = () => {
@@ -120,17 +120,17 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <Phone
-                    className="text-blue-600 dark:text-blue-400 mr-3 mt-1 flex-shrink-0"
-                    size={20}
-                  />
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white">Call Us</p>
-                    <p className="text-gray-600 dark:text-gray-400">+92 303 5648603</p>
-                  
-                  </div>
-                </div>
+                  {/* <div className="flex items-start">
+                    <Phone
+                      className="text-blue-600 dark:text-blue-400 mr-3 mt-1 flex-shrink-0"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-medium text-gray-900 dark:text-white">Call Us</p>
+                      <p className="text-gray-600 dark:text-gray-400">+92 303 5648603</p>
+                    
+                    </div>
+                  </div> */}
 
               
               </div>
