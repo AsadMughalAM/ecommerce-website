@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { X, Home, Grid3X3, Briefcase, User, Phone, Search } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { X, Home, Grid3X3, Briefcase, User, Phone } from 'lucide-react';
 import ThemeToggle from '../ui/ThemeToggle';
 
 interface MobileMenuProps {
@@ -74,18 +74,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            {/* Search */}
-            <div className="p-6 border-b border-gray-200/20 dark:border-gray-700/20">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400" size={18} />
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  aria-label="Search products"
-                  className="w-full pl-10 pr-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border border-gray-200 dark:border-gray-700 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors"
-                />
-              </div>
-            </div>
 
             {/* Navigation Links */}
             <nav className="p-6 space-y-2" role="navigation" aria-label="Mobile navigation">
